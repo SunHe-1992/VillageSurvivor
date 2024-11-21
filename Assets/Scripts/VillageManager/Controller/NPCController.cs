@@ -33,7 +33,7 @@ namespace SunHeTBS
 
             if (this.txt_status != null && getSM().currentState != null)
             {
-                string hudMsg = $"{_pawn.nickName}:  {getSM().currentState}";
+                string hudMsg = _pawn.hud;
                 this.txt_status.text = hudMsg;
             }
 

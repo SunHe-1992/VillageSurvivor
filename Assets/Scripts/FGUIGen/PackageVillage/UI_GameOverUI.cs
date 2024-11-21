@@ -10,7 +10,7 @@ namespace PackageVillage
         public UI_common_kuang_2 frame;
         public UI_Button_Common_11 btn_playAgain;
         public UI_Button_Common_11 btn_mainmenu;
-        public const string URL = "ui://786ck8sban0qhhk0ud";
+        public const string URL = "ui://786ck8sbar72hhk0ue";
 
         public static UI_GameOverUI CreateInstance()
         {

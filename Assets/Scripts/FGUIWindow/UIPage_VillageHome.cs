@@ -18,7 +18,6 @@ public class UIPage_VillageHome : FUIBase
         this.animationType = (int)FUIManager.OpenUIAnimationType.NoAnimation;
         ui.btn_buildings.onClick.Set(OnBtnBuilding);
         ui.btn_warehouse.onClick.Set(OnBtnWarehouse);
-        ui.btn_platform.onClick.Set(OnBtnPlatform);
         ui.btn_AddVillager.onClick.Set(OnBtnAddVillager);
 
     }
@@ -28,12 +27,6 @@ public class UIPage_VillageHome : FUIBase
         BattleDriver.Inst.AddVillager();
     }
 
-    private void OnBtnPlatform(EventContext context)
-    {
-        SunHeTBS.BattleDriver.Inst.running = false;
-        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
-        OnBtnClose();
-    }
 
     private void OnBtnWarehouse(EventContext context)
     {
@@ -73,7 +66,7 @@ public class UIPage_VillageHome : FUIBase
 
     void RefreshContent()
     {
-        ui.btn_platform.visible = TBSPlayer.fromGD == false;
+
 
     }
     void OnBtnClose()

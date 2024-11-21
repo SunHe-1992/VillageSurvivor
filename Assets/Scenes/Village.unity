@@ -392,7 +392,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8964054922452618063, guid: cafea7803c7f7e0459a5b3f0277eaa5f, type: 3}
       propertyPath: m_Name
-      value: BuildingPrefab (3)
+      value: Workshop
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -898,7 +898,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8964054922452618063, guid: cafea7803c7f7e0459a5b3f0277eaa5f, type: 3}
       propertyPath: m_Name
-      value: BuildingPrefab (1)
+      value: bedroom
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2132,7 +2132,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8964054922452618063, guid: cafea7803c7f7e0459a5b3f0277eaa5f, type: 3}
       propertyPath: m_Name
-      value: BuildingPrefab (2)
+      value: Tim Hortons
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

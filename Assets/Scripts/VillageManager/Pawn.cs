@@ -60,12 +60,13 @@ namespace SunHeTBS
             HandleMoving();
 
             hud = "";
-            hud += $"target pos {this.TargetPos}\n";
-            hud += $"this pos {this.position}\n";
-            hud += $"distance to target {Vector3.Distance(this.position, TargetPos)}\n";
-            hud += $"[color={GetStaminaColor()}]Stamina: {(100f * staminaValue / staminaValueMax).ToString("f1")}[/color] %\n";
-            hud += $"[color={GetHungaryColor()}]Body Energy: {(100f * (bodyEnergyValue) / bodyEnergyMax).ToString("f1")}[/color] %\n";
-            hud += $"[color={GetFoodColor()}]food left {foodStorage.ToString("f1")} [/color] \n";
+            hud += $"{sm.currentState.name}, ";
+            hud += $"target pos {this.targetPos}, ";
+            //hud += $"this pos {this.position}\n";
+            hud += $"distance to target {Vector3.Distance(this.position, targetPos)}, ";
+            hud += $"<color={GetStaminaColor()}>Stamina: {(100f * staminaValue / staminaValueMax).ToString("f1")}</color> %\n";
+            hud += $"<color={GetHungaryColor()}>Body Energy: {(100f * (bodyEnergyValue) / bodyEnergyMax).ToString("f1")}</color> %\n";
+            hud += $"<color={GetFoodColor()}>food left {foodStorage.ToString("f1")} </color> \n";
 
         }
         string color_red = "#ff0000";
@@ -221,7 +222,8 @@ namespace SunHeTBS
             s_sleep = sm.CreateState("Sleep");
             s_sleep.OnEnter = delegate
             {
-                targetPos = Vector3.zero;
+                var pos = MapBuildingMgr.Inst.GetBuildingInteractPosition(s_sleep.targetBuildingType);
+                SetDestnation(pos);
             };
             s_sleep.OnExit = delegate
             {
@@ -233,7 +235,8 @@ namespace SunHeTBS
             s_eat = sm.CreateState("Eat");
             s_eat.OnEnter = delegate
             {
-                targetPos = Vector3.zero;
+                var pos = MapBuildingMgr.Inst.GetBuildingInteractPosition(s_eat.targetBuildingType);
+                SetDestnation(pos);
             };
             s_eat.OnExit = delegate
             {
@@ -245,7 +248,8 @@ namespace SunHeTBS
             s_work = sm.CreateState("Produce");
             s_work.OnEnter = delegate
             {
-                targetPos = Vector3.zero;
+                var pos = MapBuildingMgr.Inst.GetBuildingInteractPosition(s_work.targetBuildingType);
+                SetDestnation(pos);
             };
             s_work.OnExit = delegate
             {
@@ -319,8 +323,6 @@ namespace SunHeTBS
         #region state: sleep
         private void HandleSleep()
         {
-            if (targetPos == Vector3.zero)
-                targetPos = MapBuildingMgr.Inst.GetBuildingPosition(s_sleep.targetBuildingType);
             this.staminaValue += this.staminaRecoverSpeed * Time.deltaTime;
             if (IsSleepEnough())
             {
@@ -333,8 +335,6 @@ namespace SunHeTBS
         float foodProduceSpeed = 9.0f;
         private void HandleProduce()
         {
-            if (targetPos == Vector3.zero)
-                targetPos = MapBuildingMgr.Inst.GetBuildingPosition(s_work.targetBuildingType);
             foodStorage += foodProduceSpeed * Time.deltaTime;
         }
         #endregion
@@ -343,8 +343,6 @@ namespace SunHeTBS
         float foodConsumeSpeed = 11.0f;
         private void HandleEat()
         {
-            if (targetPos == Vector3.zero)
-                targetPos = MapBuildingMgr.Inst.GetBuildingPosition(s_eat.targetBuildingType);
             if (HaveFood())
             {
                 foodStorage -= foodConsumeSpeed * Time.deltaTime;
@@ -390,18 +388,30 @@ namespace SunHeTBS
             }
         }
 
+        /// <summary>
+        /// current node pos
+        /// </summary>
         Vector3 targetPos;
-
-        public Vector3 TargetPos { get => targetPos; set => targetPos = value; }
+        /// <summary>
+        /// the end node pos
+        /// </summary>
+        Vector3 destPos;
+        /// <summary>
+        /// self current position
+        /// </summary>
         public Vector3 position;
         public float move_speed = 10.0f;
         private void HandleMoving()
         {
-            if (IsNearTargetPos() == false)
+            if (IsNearTargetPos() == false) //go to target pos
             {
-                Vector3 moveNorm = (TargetPos - position).normalized;
+                Vector3 moveNorm = (targetPos - position).normalized;
                 Vector3 moveDelta = moveNorm * move_speed * Time.deltaTime;
                 position += moveDelta;
+            }
+            else //find next node pos
+            {
+                targetPos = GetNextNodePos();
             }
         }
 
@@ -409,7 +419,7 @@ namespace SunHeTBS
         {
             if (IsNearTargetPos())
             {
-                targetPos = GetNextWaypointPos();
+                SetDestnation(GetNextWaypointPos());
             }
             else
             {
@@ -428,7 +438,7 @@ namespace SunHeTBS
         public List<Vector3> waypointList = new List<Vector3>();
         bool IsNearTargetPos()
         {
-            return Vector3.Distance(position, TargetPos) < 0.2f;
+            return Vector3.Distance(position, targetPos) < 0.2f;
         }
         public Vector3 GetRandomPosition(Vector3 position, float distance)
         {
@@ -452,7 +462,7 @@ namespace SunHeTBS
 
         int wpIndex = 0;
 
-        public Vector3 GetNextWaypointPos()
+        Vector3 GetNextWaypointPos()
         {
             // Increment the index, wrapping around if necessary
             wpIndex = (wpIndex + 1) % waypointList.Count;
@@ -461,7 +471,11 @@ namespace SunHeTBS
             return waypointList[wpIndex];
         }
 
-
+        public void SetDestnation(Vector3 pos)
+        {
+            destPos = pos;
+            FindPath();
+        }
         #endregion
         public PawnState curState()
         {
@@ -479,16 +493,41 @@ namespace SunHeTBS
         public Node startNode { get; set; }
         public Node goalNode { get; set; }
         public List<Node> pathArray;
+        int pathArrayIndex = 0;
         void FindPath()
         {
             Vector3 startPos = this.position;
-            Vector3 endPos = this.targetPos;
+            Vector3 endPos = this.destPos;
             //Assign StartNode and Goal Node
             var (startColumn, startRow) = GridManager.instance.GetGridCoordinates(startPos);
             var (goalColumn, goalRow) = GridManager.instance.GetGridCoordinates(endPos);
             startNode = new Node(GridManager.instance.GetGridCellCenter(startColumn, startRow));
             goalNode = new Node(GridManager.instance.GetGridCellCenter(goalColumn, goalRow));
             pathArray = new AStar().FindPath(startNode, goalNode);
+            pathArrayIndex = 0;
+        }
+        Vector3 GetCurrentNodePos()
+        {
+            if (pathArrayIndex < pathArray.Count)
+            {
+                var node = pathArray[pathArrayIndex];
+                return node.position;
+            }
+            else
+                return position;
+        }
+        Vector3 GetNextNodePos()
+        {
+            pathArrayIndex++;
+            if (pathArrayIndex < pathArray.Count)
+            {
+                var node = pathArray[pathArrayIndex];
+                return node.position;
+            }
+            else
+            {
+                return position;
+            }
         }
 
         void OnDrawGizmos()

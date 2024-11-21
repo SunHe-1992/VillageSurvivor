@@ -12,6 +12,8 @@ namespace SunHeTBS
         public string buildingName = "House";
         TMP_Text txt_name;
         UIProgressBar pBar;
+
+        Transform interactionTrans;
         // Start is called before the first frame update
         void Start()
         {
@@ -21,6 +23,10 @@ namespace SunHeTBS
             {
                 txt_name = this.transform.Find("Canvas/txt_building").GetComponent<TMP_Text>();
                 txt_name.text = buildingName;
+            }
+            if (this.transform.Find("interactionTrans") != null)
+            {
+                this.interactionTrans = this.transform.Find("interactionTrans");
             }
             SetProgress(0f);
         }
@@ -36,5 +42,12 @@ namespace SunHeTBS
                 pBar.SetPercent(pct);
         }
 
+        public Vector3 GetInteractionPos()
+        {
+            if (this.interactionTrans != null)
+                return this.interactionTrans.position;
+            else
+                return this.transform.position;
+        }
     }
 }
