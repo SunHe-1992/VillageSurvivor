@@ -1,0 +1,202 @@
+[
+  {
+    "ID": 1,
+    "Name": "Home",
+    "Visible": false,
+    "Category": "Residential",
+    "WorkLoad": 100,
+    "Price": 0,
+    "ModelName": "Home",
+    "Description": "Provide living space for villagers."
+  },
+  {
+    "ID": 2,
+    "Name": "Tavern",
+    "Visible": false,
+    "Category": "Residential",
+    "WorkLoad": 100,
+    "Price": 0,
+    "ModelName": "Tavern",
+    "Description": "Social hubs for villagers to relax and socialize."
+  },
+  {
+    "ID": 3,
+    "Name": "Chapel",
+    "Visible": false,
+    "Category": "Residential",
+    "WorkLoad": 100,
+    "Price": 0,
+    "ModelName": "Chapel",
+    "Description": "Places of worship for religious ceremonies."
+  },
+  {
+    "ID": 4,
+    "Name": "Logging Camp",
+    "Visible": true,
+    "Category": "Extraction",
+    "WorkLoad": 100,
+    "Price": 0,
+    "ModelName": "Logging Camp",
+    "Description": "Used for harvesting wood."
+  },
+  {
+    "ID": 5,
+    "Name": "Mining Camp",
+    "Visible": true,
+    "Category": "Extraction",
+    "WorkLoad": 100,
+    "Price": 0,
+    "ModelName": "Mining Camp",
+    "Description": "Used for extracting minerals and ores."
+  },
+  {
+    "ID": 6,
+    "Name": "Fishing Pier",
+    "Visible": true,
+    "Category": "Extraction",
+    "WorkLoad": 100,
+    "Price": 0,
+    "ModelName": "Fishing Pier",
+    "Description": "Used for catching fish."
+  },
+  {
+    "ID": 7,
+    "Name": "Hunting Lodge",
+    "Visible": true,
+    "Category": "Hunting",
+    "WorkLoad": 100,
+    "Price": 0,
+    "ModelName": "Hunting Lodge",
+    "Description": "Serve as bases for hunting activities."
+  },
+  {
+    "ID": 8,
+    "Name": "Field",
+    "Visible": false,
+    "Category": "Farming",
+    "WorkLoad": 100,
+    "Price": 0,
+    "ModelName": "Field",
+    "Description": "Used for cultivating crops."
+  },
+  {
+    "ID": 9,
+    "Name": "Barn",
+    "Visible": false,
+    "Category": "Farming",
+    "WorkLoad": 100,
+    "Price": 0,
+    "ModelName": "Barn",
+    "Description": "Store harvested crops and other agricultural goods."
+  },
+  {
+    "ID": 10,
+    "Name": "Pen",
+    "Visible": false,
+    "Category": "Animal Husbandry",
+    "WorkLoad": 100,
+    "Price": 0,
+    "ModelName": "Pen",
+    "Description": "Used for raising livestock, such as pigs and sheep."
+  },
+  {
+    "ID": 11,
+    "Name": "Stable",
+    "Visible": false,
+    "Category": "Animal Husbandry",
+    "WorkLoad": 100,
+    "Price": 0,
+    "ModelName": "Stable",
+    "Description": "Used for housing horses."
+  },
+  {
+    "ID": 12,
+    "Name": "Workshop",
+    "Visible": false,
+    "Category": "Production",
+    "WorkLoad": 100,
+    "Price": 0,
+    "ModelName": "Workshop",
+    "Description": "Used for crafting various items, such as tools, weapons, and furniture."
+  },
+  {
+    "ID": 13,
+    "Name": "Smithy",
+    "Visible": false,
+    "Category": "Production",
+    "WorkLoad": 100,
+    "Price": 0,
+    "ModelName": "Smithy",
+    "Description": "Used for forging metal objects."
+  },
+  {
+    "ID": 14,
+    "Name": "Brewery",
+    "Visible": true,
+    "Category": "Production",
+    "WorkLoad": 100,
+    "Price": 0,
+    "ModelName": "Brewery",
+    "Description": "Produce alcoholic beverages."
+  },
+  {
+    "ID": 15,
+    "Name": "Bakery",
+    "Visible": false,
+    "Category": "Production",
+    "WorkLoad": 100,
+    "Price": 0,
+    "ModelName": "Bakery",
+    "Description": "Produce bread and other baked goods."
+  },
+  {
+    "ID": 16,
+    "Name": "Trading Post",
+    "Visible": false,
+    "Category": "Services",
+    "WorkLoad": 100,
+    "Price": 0,
+    "ModelName": "Trading Post",
+    "Description": "Facilitate trade with other villages."
+  },
+  {
+    "ID": 17,
+    "Name": "Blacksmith",
+    "Visible": true,
+    "Category": "Services",
+    "WorkLoad": 100,
+    "Price": 0,
+    "ModelName": "Blacksmith",
+    "Description": "Provide repair and maintenance services for weapons and tools."
+  },
+  {
+    "ID": 18,
+    "Name": "Tailor",
+    "Visible": true,
+    "Category": "Services",
+    "WorkLoad": 100,
+    "Price": 0,
+    "ModelName": "Tailor",
+    "Description": "Produce clothing and textiles."
+  },
+  {
+    "ID": 19,
+    "Name": "Warehouse",
+    "Visible": false,
+    "Category": "Storage",
+    "WorkLoad": 100,
+    "Price": 0,
+    "ModelName": "Warehouse",
+    "Description": "Store various resources and goods."
+  },
+  {
+    "ID": 20,
+    "Name": "Silo",
+    "Visible": false,
+    "Category": "Storage",
+    "WorkLoad": 100,
+    "Price": 0,
+    "ModelName": "Silo",
+    "Description": "Store grain and other agricultural products."
+  }
+]

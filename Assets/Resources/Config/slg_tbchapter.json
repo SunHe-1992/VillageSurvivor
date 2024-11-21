@@ -1,0 +1,38 @@
+[
+  {
+    "ID": 1,
+    "Name": "ChapterName1",
+    "Description": "chapter1 story",
+    "Image": "ui://PackageMonopoly/land1"
+  },
+  {
+    "ID": 2,
+    "Name": "ChapterName2",
+    "Description": "chapter2 story",
+    "Image": "ui://PackageMonopoly/land2"
+  },
+  {
+    "ID": 3,
+    "Name": "ChapterName3",
+    "Description": "chapter3 story",
+    "Image": "ui://PackageMonopoly/land3"
+  },
+  {
+    "ID": 4,
+    "Name": "ChapterName4",
+    "Description": "chapter4 story",
+    "Image": "ui://PackageMonopoly/land4"
+  },
+  {
+    "ID": 5,
+    "Name": "ChapterName5",
+    "Description": "chapter5 story",
+    "Image": "ui://PackageMonopoly/land5"
+  },
+  {
+    "ID": 6,
+    "Name": "ChapterName6",
+    "Description": "chapter6 story",
+    "Image": "ui://PackageMonopoly/land6"
+  }
+]

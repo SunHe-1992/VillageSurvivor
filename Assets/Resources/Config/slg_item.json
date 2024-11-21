@@ -1,0 +1,192 @@
+[
+  {
+    "ID": 1,
+    "Name": "Log",
+    "Quality": 1,
+    "Icon": "Log",
+    "Des": "Log",
+    "Price": 2,
+    "effectId": 0,
+    "ModelName": ""
+  },
+  {
+    "ID": 2,
+    "Name": "Stick",
+    "Quality": 1,
+    "Icon": "Stick",
+    "Des": "Stick",
+    "Price": 2,
+    "effectId": 0,
+    "ModelName": ""
+  },
+  {
+    "ID": 3,
+    "Name": "Stone",
+    "Quality": 1,
+    "Icon": "Stone",
+    "Des": "Stone",
+    "Price": 2,
+    "effectId": 0,
+    "ModelName": ""
+  },
+  {
+    "ID": 4,
+    "Name": "Iron Bar",
+    "Quality": 1,
+    "Icon": "Iron Bar",
+    "Des": "Iron Bar",
+    "Price": 2,
+    "effectId": 0,
+    "ModelName": ""
+  },
+  {
+    "ID": 5,
+    "Name": "Straw",
+    "Quality": 1,
+    "Icon": "Straw",
+    "Des": "Straw",
+    "Price": 2,
+    "effectId": 0,
+    "ModelName": ""
+  },
+  {
+    "ID": 6,
+    "Name": "Leather",
+    "Quality": 1,
+    "Icon": "Leather",
+    "Des": "Leather",
+    "Price": 2,
+    "effectId": 0,
+    "ModelName": ""
+  },
+  {
+    "ID": 7,
+    "Name": "Linen Thread",
+    "Quality": 1,
+    "Icon": "Linen Thread",
+    "Des": "Linen Thread",
+    "Price": 2,
+    "effectId": 0,
+    "ModelName": ""
+  },
+  {
+    "ID": 8,
+    "Name": "Wool Thread",
+    "Quality": 1,
+    "Icon": "Wool Thread",
+    "Des": "Wool Thread",
+    "Price": 2,
+    "effectId": 0,
+    "ModelName": ""
+  },
+  {
+    "ID": 9,
+    "Name": "Plank",
+    "Quality": 1,
+    "Icon": "Plank",
+    "Des": "Plank",
+    "Price": 2,
+    "effectId": 0,
+    "ModelName": ""
+  },
+  {
+    "ID": 10,
+    "Name": "Copper Bar",
+    "Quality": 1,
+    "Icon": "Copper Bar",
+    "Des": "Copper Bar",
+    "Price": 2,
+    "effectId": 0,
+    "ModelName": ""
+  },
+  {
+    "ID": 11,
+    "Name": "Bronze Bar",
+    "Quality": 1,
+    "Icon": "Bronze Bar",
+    "Des": "Bronze Bar",
+    "Price": 2,
+    "effectId": 0,
+    "ModelName": ""
+  },
+  {
+    "ID": 12,
+    "Name": "Grapes",
+    "Quality": 2,
+    "Icon": "Grapes",
+    "Des": "Grapes",
+    "Price": 3,
+    "effectId": 0,
+    "ModelName": ""
+  },
+  {
+    "ID": 13,
+    "Name": "Wine",
+    "Quality": 2,
+    "Icon": "Wine",
+    "Des": "Wine",
+    "Price": 10,
+    "effectId": 0,
+    "ModelName": ""
+  },
+  {
+    "ID": 14,
+    "Name": "Iron Ore",
+    "Quality": 2,
+    "Icon": "Iron Ore",
+    "Des": "Iron Ore",
+    "Price": 5,
+    "effectId": 0,
+    "ModelName": ""
+  },
+  {
+    "ID": 15,
+    "Name": "Bronze Ore",
+    "Quality": 2,
+    "Icon": "Bronze Ore",
+    "Des": "Bronze Ore",
+    "Price": 5,
+    "effectId": 0,
+    "ModelName": ""
+  },
+  {
+    "ID": 16,
+    "Name": "Fish Meat",
+    "Quality": 1,
+    "Icon": "Fish Meat",
+    "Des": "Fish Meat",
+    "Price": 2,
+    "effectId": 0,
+    "ModelName": ""
+  },
+  {
+    "ID": 17,
+    "Name": "Deer Meat",
+    "Quality": 1,
+    "Icon": "Deer Meat",
+    "Des": "Deer Meat",
+    "Price": 2,
+    "effectId": 0,
+    "ModelName": ""
+  },
+  {
+    "ID": 18,
+    "Name": "Simple clothes",
+    "Quality": 1,
+    "Icon": "Simple clothes",
+    "Des": "Simple clothes",
+    "Price": 20,
+    "effectId": 0,
+    "ModelName": ""
+  },
+  {
+    "ID": 19,
+    "Name": "Iron Axe",
+    "Quality": 1,
+    "Icon": "Iron Axe",
+    "Des": "Iron Axe",
+    "Price": 100,
+    "effectId": 0,
+    "ModelName": ""
+  }
+]
