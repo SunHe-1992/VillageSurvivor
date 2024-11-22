@@ -80,14 +80,14 @@ namespace SunHeTBS
             UpdateCharacter();
             HandleMoving();
 
-            hud = "";
-            hud += $"{sm.currentState.name}, ";
-            hud += $"target pos {this.targetPos}, ";
-            //hud += $"this pos {this.position}\n";
-            hud += $"distance to target {Vector3.Distance(this.position, targetPos)}, ";
-            hud += $"<color={GetStaminaColor()}>Stamina: {(100f * staminaValue / staminaValueMax).ToString("f1")}</color> %\n";
-            hud += $"<color={GetHungaryColor()}>Body Energy: {(100f * (bodyEnergyValue) / bodyEnergyMax).ToString("f1")}</color> %\n";
-            hud += $"<color={GetFoodColor()}>food left {foodStorage.ToString("f1")} </color> \n";
+            hud = this.nickName;
+            //hud += $"{sm.currentState.name}, ";
+            //hud += $"target pos {this.targetPos}, ";
+            ////hud += $"this pos {this.position}\n";
+            //hud += $"distance to target {Vector3.Distance(this.position, targetPos)}, ";
+            //hud += $"<color={GetStaminaColor()}>Stamina: {(100f * staminaValue / staminaValueMax).ToString("f1")}</color> %\n";
+            //hud += $"<color={GetHungaryColor()}>Body Energy: {(100f * (bodyEnergyValue) / bodyEnergyMax).ToString("f1")}</color> %\n";
+            //hud += $"<color={GetFoodColor()}>food left {foodStorage.ToString("f1")} </color> \n";
 
         }
         string color_red = "#ff0000";

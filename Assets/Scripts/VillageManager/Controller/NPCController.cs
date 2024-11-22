@@ -75,7 +75,7 @@ namespace SunHeTBS
         void OnMouseUp()
         {
             // This will be called when the NPC is clicked
-            //Debug.Log($"Clicked on NPC!" + this.name);
+            Debug.Log($"Clicked on NPC!" + this.name);
             BattleDriver.Inst.clickedPawn = this._pawn;
             UIPage_VillageHome.showPawnHUD = true;
         }
