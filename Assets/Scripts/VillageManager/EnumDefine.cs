@@ -55,5 +55,10 @@ namespace SunHeTBS
         SimpleClothes = 18,
         IronAxe = 19
     }
+    public enum Gender : int
+    {
+        Male = 0,
+        Female = 1,
+    }
 
 }

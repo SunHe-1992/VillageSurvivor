@@ -4,16 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace SunHeTBS
 {
     public class Pawn : GameEntity
     {
         #region worker attributes
-
         //this pawn is working in this place
         public Building workingPlace;
         public string nickName = "";
+        Gender gender = Gender.Male;
+        int age = 18;
         public Order workingOrder = null;
         /// <summary>
         /// add work load for every frame
@@ -23,7 +25,7 @@ namespace SunHeTBS
         {
             return this.workSpeed;
         }
-        #region nick name
+        #region generate personal info : name, gender
         private string[] names = new string[]
 {
         "Alice", "Bob", "Charlie", "David", "Eve", "Fay", "George", "Hannah", "Ivy", "Jack",
@@ -34,9 +36,28 @@ namespace SunHeTBS
             int randomIndex = UnityEngine.Random.Range(0, names.Length); // Generates a random index
             return names[randomIndex];
         }
+        Gender GetRandomGender()
+        {
+            // Get a random value between 0 and 1 (inclusive)
+            int randomValue = Random.Range(0, 2);
+
+            // Cast the random integer to Gender enum
+            return (Gender)randomValue;
+        }
+
         void GenerateNickName()
         {
             this.nickName = GetRandomName();
+            this.gender = GetRandomGender();
+            this.age = Random.Range(18, 65);
+        }
+        public string GetCharacterInfo()
+        {
+            return $"Nickname: {nickName}\nGender: {gender}\nAge: {age}";
+        }
+        public string GetStateInfo()
+        {
+            return sm.currentState.name;
         }
         #endregion
         #endregion
@@ -93,13 +114,13 @@ namespace SunHeTBS
             return color;
         }
 
-        readonly float bodyEnergyMax = 100f;
+        public float bodyEnergyMax = 100f;
         /// <summary>
         /// eat to increase.
         /// </summary>
         public float bodyEnergyValue = 50f;
 
-        readonly float staminaValueMax = 100f;
+        public float staminaValueMax = 100f;
         /// <summary>
         /// sleep to increase.
         /// </summary>

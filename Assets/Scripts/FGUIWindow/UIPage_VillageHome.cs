@@ -8,7 +8,6 @@ using UniFramework.Event;
 using SunHeTBS;
 public class UIPage_VillageHome : FUIBase
 {
-
     UI_VillageHome ui;
     protected override void OnInit()
     {
@@ -19,8 +18,9 @@ public class UIPage_VillageHome : FUIBase
         ui.btn_buildings.onClick.Set(OnBtnBuilding);
         ui.btn_warehouse.onClick.Set(OnBtnWarehouse);
         ui.btn_AddVillager.onClick.Set(OnBtnAddVillager);
-
+        ui.pawnHUDcomp.btn_close.onClick.Set(OnPawnHUDClose);
     }
+
 
     private void OnBtnAddVillager(EventContext context)
     {
@@ -43,7 +43,7 @@ public class UIPage_VillageHome : FUIBase
     protected override void OnShown()
     {
         base.OnShown();
-
+        ShowPawnHUD(false);
     }
 
 
@@ -85,5 +85,40 @@ public class UIPage_VillageHome : FUIBase
         msg += $"score={TBSPlayer.UserDetail.score}";
 
         ui.txt_hud.text = msg;
+
+        if (showPawnHUD)
+        {
+            this.displayingPawn = BattleDriver.Inst.clickedPawn;
+        }
+        if (displayingPawn != null && showPawnHUD)
+        {
+            RefreshPawnHUD();
+        }
     }
+    #region pawn HUD
+    public static bool showPawnHUD = false;
+    Pawn displayingPawn = null;
+    void ShowPawnHUD(bool isshow)
+    {
+        showPawnHUD = isshow;
+        ui.ctrl_pawnHUD.selectedIndex = isshow ? 1 : 0;
+    }
+    void RefreshPawnHUD()
+    {
+        ui.ctrl_pawnHUD.selectedIndex = 1;
+        var comp = ui.pawnHUDcomp;
+        comp.txt_name.text = displayingPawn.GetCharacterInfo();
+        comp.txt_state.text = displayingPawn.GetStateInfo();
+        comp.pBar_stamina.max = displayingPawn.staminaValueMax;
+        comp.pBar_stamina.value = displayingPawn.staminaValue;
+        comp.pBar_food.max = displayingPawn.bodyEnergyMax;
+        comp.pBar_food.value = displayingPawn.bodyEnergyValue;
+    }
+
+    private void OnPawnHUDClose(EventContext context)
+    {
+        ShowPawnHUD(false);
+        this.displayingPawn = null;
+    }
+    #endregion
 }

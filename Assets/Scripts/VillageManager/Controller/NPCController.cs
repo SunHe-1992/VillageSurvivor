@@ -21,6 +21,7 @@ namespace SunHeTBS
             {
                 this._pawn = new Pawn();
                 BattleDriver.Inst.InsertPawn(this._pawn);
+                this.gameObject.name = this._pawn.nickName;
             }
             GenerateWayPoints();
             this.txt_status = this.transform.Find("Canvas/txt_status").GetComponent<TMP_Text>();
@@ -70,5 +71,14 @@ namespace SunHeTBS
             this.transform.position = Vector3.Lerp(this.transform.position, _pawn.position, 0.1f);
         }
 
+        #region on click
+        void OnMouseUp()
+        {
+            // This will be called when the NPC is clicked
+            //Debug.Log($"Clicked on NPC!" + this.name);
+            BattleDriver.Inst.clickedPawn = this._pawn;
+            UIPage_VillageHome.showPawnHUD = true;
+        }
+        #endregion
     }
 }

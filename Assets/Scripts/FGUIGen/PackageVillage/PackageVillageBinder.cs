@@ -24,6 +24,7 @@ namespace PackageVillage
             UIObjectFactory.SetPackageItemExtension(UI_TestUI.URL, typeof(UI_TestUI));
             UIObjectFactory.SetPackageItemExtension(UI_Button_Common_11.URL, typeof(UI_Button_Common_11));
             UIObjectFactory.SetPackageItemExtension(UI_VillageMenuUI.URL, typeof(UI_VillageMenuUI));
+            UIObjectFactory.SetPackageItemExtension(UI_PawnHUD.URL, typeof(UI_PawnHUD));
             UIObjectFactory.SetPackageItemExtension(UI_CommonFrame1.URL, typeof(UI_CommonFrame1));
             UIObjectFactory.SetPackageItemExtension(UI_AchievementUI.URL, typeof(UI_AchievementUI));
             UIObjectFactory.SetPackageItemExtension(UI_AchievementItem.URL, typeof(UI_AchievementItem));

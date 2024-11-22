@@ -144,6 +144,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5951561217659545109}
   - component: {fileID: 6043822242255741424}
+  - component: {fileID: 6484442698088132877}
   m_Layer: 0
   m_Name: NPC
   m_TagString: Untagged
@@ -181,6 +182,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   txt_status: {fileID: 6142873893816931820}
+--- !u!136 &6484442698088132877
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7564685074032761444}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2.46
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.99, z: 0}
 --- !u!1 &9143343031878663269
 GameObject:
   m_ObjectHideFlags: 0

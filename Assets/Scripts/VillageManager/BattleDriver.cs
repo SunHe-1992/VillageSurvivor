@@ -143,6 +143,8 @@ namespace SunHeTBS
         {
             var villager = GameObject.Instantiate(MapBuildingMgr.Inst.VillagerPrefab);
         }
+
+        public Pawn clickedPawn;
         #endregion
 
 
