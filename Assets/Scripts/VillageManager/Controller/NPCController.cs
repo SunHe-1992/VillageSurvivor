@@ -72,7 +72,7 @@ namespace SunHeTBS
         }
 
         #region on click
-        void OnMouseUp()
+        void OnMouseDown()
         {
             // This will be called when the NPC is clicked
             Debug.Log($"Clicked on NPC!" + this.name);

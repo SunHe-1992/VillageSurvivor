@@ -8,6 +8,7 @@ using System;
 using UnityEngine.SceneManagement;
 
 using UniFramework.Singleton;
+using System.Linq;
 
 namespace SunHeTBS
 {
@@ -145,6 +146,26 @@ namespace SunHeTBS
         }
 
         public Pawn clickedPawn;
+
+        public int GetDeadPawnCount()
+        {
+            return pawnList.Count(p => p.isDead);
+        }
+        public int deathCountMax = 1;
+        public void CheckGameOver()
+        {
+            int deathCount = GetDeadPawnCount();
+            if (deathCount >= deathCountMax)
+            {
+                //gameover;
+                FUIManager.Inst.ShowUI<UIPage_GameOverUI>(FUIDef.FWindow.GameOverUI);
+            }
+        }
+        void ResetBattleField()
+        {
+            //todo clean data for a new game
+
+        }
         #endregion
 
 

@@ -49,5 +49,15 @@ namespace SunHeTBS
             else
                 return this.transform.position;
         }
+
+        #region on click
+        void OnMouseDown()
+        {
+            // This will be called when the NPC is clicked
+            Debug.Log($"Clicked on Building!" + this.name);
+            
+          
+        }
+        #endregion
     }
 }

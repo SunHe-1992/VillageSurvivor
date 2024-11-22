@@ -19,8 +19,13 @@ public class UIPage_VillageHome : FUIBase
         ui.btn_warehouse.onClick.Set(OnBtnWarehouse);
         ui.btn_AddVillager.onClick.Set(OnBtnAddVillager);
         ui.pawnHUDcomp.btn_close.onClick.Set(OnPawnHUDClose);
+        ui.btn_help.onClick.Set(OnBtnHelpClick);
     }
 
+    private void OnBtnHelpClick(EventContext context)
+    {
+        FUIManager.Inst.ShowUI<UIPage_InstructionUI>(FUIDef.FWindow.InstructionUI);
+    }
 
     private void OnBtnAddVillager(EventContext context)
     {
@@ -113,6 +118,8 @@ public class UIPage_VillageHome : FUIBase
         comp.pBar_stamina.value = displayingPawn.staminaValue;
         comp.pBar_food.max = displayingPawn.bodyEnergyMax;
         comp.pBar_food.value = displayingPawn.bodyEnergyValue;
+        comp.pBar_HP.max = displayingPawn.HPMax;
+        comp.pBar_HP.value = displayingPawn.HP;
     }
 
     private void OnPawnHUDClose(EventContext context)

@@ -74,7 +74,7 @@ namespace SunHeTBS
                     if (currentState != null)
                     {
                         currentState.OnExit?.Invoke();
-                        Debug.Log($"transitioning from {currentState.ToString()} to {st.ToString()}");
+                        //Debug.Log($"transitioning from {currentState.ToString()} to {st.ToString()}");
                     }
                     currentState = st;
                     st.OnEnter?.Invoke();
@@ -102,7 +102,7 @@ namespace SunHeTBS
             if (currentState != null)
             {
                 currentState.OnExit?.Invoke();
-                Debug.Log($"transitioning from {currentState.ToString()} to {states[name].ToString()}");
+                //Debug.Log($"transitioning from {currentState.ToString()} to {states[name].ToString()}");
             }
             currentState = states[name];
             currentState.OnEnter?.Invoke();

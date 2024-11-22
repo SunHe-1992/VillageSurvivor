@@ -72,23 +72,34 @@ namespace SunHeTBS
             InitStateMachine();
 
             pathArray = new List<Node>();
+
+            hPModifierList = new List<HPModifier>();
+            hPModifierList.Add(new HPModifier(HPModifier.HPModifierType.BodyEnergy, 0.03f, 12f, 0.66f, 5f));
+            hPModifierList.Add(new HPModifier(HPModifier.HPModifierType.Stamina, 0.05f, 10f, 1.0f, 1f));
+
         }
         public string hud = "";
         public override void Update(float dt)
         {
-            sm.Update();
-            UpdateCharacter();
-            HandleMoving();
+            if (this.isDead == false)
+            {
+                sm.Update();
+                UpdateCharacter(dt);
+                HandleMoving();
 
-            hud = this.nickName;
-            //hud += $"{sm.currentState.name}, ";
-            //hud += $"target pos {this.targetPos}, ";
-            ////hud += $"this pos {this.position}\n";
-            //hud += $"distance to target {Vector3.Distance(this.position, targetPos)}, ";
-            //hud += $"<color={GetStaminaColor()}>Stamina: {(100f * staminaValue / staminaValueMax).ToString("f1")}</color> %\n";
-            //hud += $"<color={GetHungaryColor()}>Body Energy: {(100f * (bodyEnergyValue) / bodyEnergyMax).ToString("f1")}</color> %\n";
-            //hud += $"<color={GetFoodColor()}>food left {foodStorage.ToString("f1")} </color> \n";
+                hud = this.nickName;
+                //hud += $"{sm.currentState.name}, ";
+                //hud += $"target pos {this.targetPos}, ";
+                ////hud += $"this pos {this.position}\n";
+                //hud += $"distance to target {Vector3.Distance(this.position, targetPos)}, ";
+                //hud += $"<color={GetStaminaColor()}>Stamina: {(100f * staminaValue / staminaValueMax).ToString("f1")}</color> %\n";
+                //hud += $"<color={GetHungaryColor()}>Body Energy: {(100f * (bodyEnergyValue) / bodyEnergyMax).ToString("f1")}</color> %\n";
+                //hud += $"<color={GetFoodColor()}>food left {foodStorage.ToString("f1")} </color> \n";
+            }
+            else //dead pawn
+            {
 
+            }
         }
         string color_red = "#ff0000";
         string color_green = "#00cc00";
@@ -157,7 +168,49 @@ namespace SunHeTBS
         {
             return this.bodyEnergyValue > bodyEnergyMax * 0.95f;
         }
-        void UpdateCharacter()
+        #region HP management
+
+        public float HP = 1000f;
+        public float HPMax = 1000f;
+        float energyDangerPct = 0.05f;
+        float HPDeceraseSpeed_energy = 10f;
+        List<HPModifier> hPModifierList;
+        public void GetDamage(float dmgValue)
+        {
+            CostHP(dmgValue);
+        }
+        public void CostHP(float dmgValue)
+        {
+            this.HP -= dmgValue;
+            CheckDeath();
+        }
+        public void GetHeal(float dmgValue)
+        {
+            CostHP(dmgValue);
+        }
+        public void RecoverHP(float dmgValue)
+        {
+            this.HP += dmgValue;
+            CheckDeath();
+        }
+        void CheckDeath()
+        {
+            if (this.HP <= 0)
+            {
+                DoDeath();
+            }
+        }
+
+        public bool isDead = false;
+        void DoDeath()
+        {
+            this.isDead = true;
+            Debug.Log(this.ToString() + $" died");
+            //todo 
+
+        }
+        #endregion
+        void UpdateCharacter(float dt)
         {
             if (bodyEnergyValue > 0)
             {
@@ -193,6 +246,11 @@ namespace SunHeTBS
                     ChangeState(s_work);
                     return;
                 }
+            }
+
+            foreach (HPModifier hpm in hPModifierList)
+            {
+                hpm.Update(this, dt);
             }
         }
 
@@ -571,4 +629,55 @@ namespace SunHeTBS
         }
         #endregion
     }
+    internal class HPModifier
+    {
+        public enum HPModifierType
+        {
+            BodyEnergy = 0,
+            Stamina = 1,
+        }
+        HPModifierType name;
+
+        float dangerPct = 0.05f;
+        float HPDeceraseSpeed = 10f;
+        float recoverPct = 0.66f;
+        float HPRecoverSpeed = 3.3f;
+
+        public HPModifier(HPModifierType name, float dangerPct, float hPDeceraseSpeed, float recoverPct, float hPRecoverSpeed)
+        {
+            this.name = name;
+            this.dangerPct = dangerPct;
+            HPDeceraseSpeed = hPDeceraseSpeed;
+            this.recoverPct = recoverPct;
+            HPRecoverSpeed = hPRecoverSpeed;
+        }
+
+        public void Update(Pawn p, float deltaTime)
+        {
+            float curValue = 0;
+            float maxValue = 0;
+            if (this.name == HPModifierType.BodyEnergy)
+            {
+                curValue = p.bodyEnergyValue;
+                maxValue = p.bodyEnergyMax;
+            }
+            else if (this.name == HPModifierType.Stamina)
+            {
+                curValue = p.staminaValue;
+                maxValue = p.staminaValueMax;
+            }
+
+            if (curValue < maxValue * this.dangerPct)
+            {
+                float changeValue = deltaTime * this.HPDeceraseSpeed;
+                p.GetDamage(changeValue);
+            }
+            if (curValue > maxValue * this.recoverPct)
+            {
+                float changeValue = deltaTime * this.HPRecoverSpeed;
+                p.GetHeal(changeValue);
+            }
+        }
+    }
 }
+

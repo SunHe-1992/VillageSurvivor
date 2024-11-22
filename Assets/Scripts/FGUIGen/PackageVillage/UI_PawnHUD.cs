@@ -12,6 +12,7 @@ namespace PackageVillage
         public UI_ProgressBar1 pBar_stamina;
         public UI_ProgressBar1 pBar_food;
         public GButton btn_close;
+        public UI_ProgressBar1 pBar_HP;
         public const string URL = "ui://786ck8sbn4w3hhk0uf";
 
         public static UI_PawnHUD CreateInstance()
@@ -28,6 +29,7 @@ namespace PackageVillage
             pBar_stamina = (UI_ProgressBar1)GetChild("pBar_stamina");
             pBar_food = (UI_ProgressBar1)GetChild("pBar_food");
             btn_close = (GButton)GetChild("btn_close");
+            pBar_HP = (UI_ProgressBar1)GetChild("pBar_HP");
         }
     }
 }

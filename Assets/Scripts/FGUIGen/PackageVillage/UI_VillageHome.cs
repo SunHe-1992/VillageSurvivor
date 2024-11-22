@@ -11,6 +11,7 @@ namespace PackageVillage
         public UI_Button_Common_11 btn_buildings;
         public UI_Button_Common_11 btn_warehouse;
         public GTextField txt_hud;
+        public UI_Button_Common_11 btn_help;
         public UI_Button_Common_11 btn_AddVillager;
         public UI_PawnHUD pawnHUDcomp;
         public const string URL = "ui://786ck8sbhm4dhhk0tg";
@@ -28,6 +29,7 @@ namespace PackageVillage
             btn_buildings = (UI_Button_Common_11)GetChild("btn_buildings");
             btn_warehouse = (UI_Button_Common_11)GetChild("btn_warehouse");
             txt_hud = (GTextField)GetChild("txt_hud");
+            btn_help = (UI_Button_Common_11)GetChild("btn_help");
             btn_AddVillager = (UI_Button_Common_11)GetChild("btn_AddVillager");
             pawnHUDcomp = (UI_PawnHUD)GetChild("pawnHUDcomp");
         }
