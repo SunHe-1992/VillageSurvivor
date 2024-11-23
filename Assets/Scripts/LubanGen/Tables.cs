@@ -22,6 +22,7 @@ public partial class Tables
     public SLG.TbBuilding TbBuilding {get; }
     public SLG.TbChapter TbChapter {get; }
     public SLG.Product Product {get; }
+    public SLG.CharacterName CharacterName {get; }
 
     public Tables(System.Func<string, JSONNode> loader)
     {
@@ -33,6 +34,7 @@ public partial class Tables
         TbBuilding = new SLG.TbBuilding(loader("slg_tbbuilding"));
         TbChapter = new SLG.TbChapter(loader("slg_tbchapter"));
         Product = new SLG.Product(loader("slg_product"));
+        CharacterName = new SLG.CharacterName(loader("slg_charactername"));
         ResolveRef();
     }
     
@@ -46,6 +48,7 @@ public partial class Tables
         TbBuilding.ResolveRef(this);
         TbChapter.ResolveRef(this);
         Product.ResolveRef(this);
+        CharacterName.ResolveRef(this);
     }
 }
 

@@ -27,15 +27,9 @@ namespace SunHeTBS
             return this.workSpeed;
         }
         #region generate personal info : name, gender
-        private string[] names = new string[]
-{
-        "Alice", "Bob", "Charlie", "David", "Eve", "Fay", "George", "Hannah", "Ivy", "Jack",
-        "Karen", "Leo", "Mona", "Nina", "Oscar", "Paul", "Quincy", "Rachel", "Steve", "Tina"
-};
         private string GetRandomName()
         {
-            int randomIndex = UnityEngine.Random.Range(0, names.Length); // Generates a random index
-            return names[randomIndex];
+            return CharacterGenerator.Inst.GenerateFullName();
         }
         Gender GetRandomGender()
         {

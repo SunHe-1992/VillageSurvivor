@@ -58,6 +58,8 @@ public class GameLoader : MonoBehaviour
         FUIManager.ReSetBundle();//FUIManager initialize
         LoadFontRes();
         TBSPlayer.SetUserDetail();
+
+        CharacterGenerator.Inst = new CharacterGenerator();
     }
 
 
