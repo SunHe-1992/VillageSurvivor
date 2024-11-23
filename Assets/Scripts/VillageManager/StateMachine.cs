@@ -17,7 +17,7 @@ namespace SunHeTBS
             public System.Action OnEnter;
             public System.Action OnExit;
             public float elpsedTime;
-            public BuildingEffectType targetBuildingType = BuildingEffectType.Default;
+            public cfg.SLG.BuildingEffect targetBuildingType = cfg.SLG.BuildingEffect.Canteen;
             public void StateOnEnter()
             {
                 this.elpsedTime = 0;

@@ -30,26 +30,7 @@ namespace SunHeTBS
         {
 
         }
-        public Vector3 GetBuildingPosition(BuildingEffectType type)
-        {
-            var bd = buildingList.Find(p => { return p.effect == type; });
-            if (bd != null)
-            {
-                return bd.transform.position;
-            }
-            return Vector3.zero;
-        }
-        public Vector3 GetBuildingInteractPosition(BuildingEffectType type)
-        {
-            var bd = buildingList.Find(p => { return p.effect == type; });
-            if (bd != null)
-            {
-                return bd.GetInteractionPos();
-            }
-            return Vector3.zero;
-        }
-
-
+       
       
     }
 

@@ -9,6 +9,7 @@ namespace SunHeTBS
 {
     public class Building : GameEntity
     {
+        public MapBuilding controller;
         private static int seqId = 0;
         public int sid = 0;
         public string name = "";
@@ -311,5 +312,6 @@ namespace SunHeTBS
             if (p.workingBuilding == this.bd)
                 p.workingBuilding = null;
         }
+
     }
 }

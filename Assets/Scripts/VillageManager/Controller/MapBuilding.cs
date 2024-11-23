@@ -18,6 +18,7 @@ namespace SunHeTBS
             {
                 //Debug.Log(cfg.ToString());
                 logicBuilding = new Building(buildingCfgId);
+                logicBuilding.controller = this;
                 BattleDriver.Inst.buildings.Add(logicBuilding);
                 this.buildingName = logicBuilding.BdCfg.Name;
                 if (txt_name != null)
@@ -25,7 +26,6 @@ namespace SunHeTBS
             }
         }
         #endregion
-        public BuildingEffectType effect = BuildingEffectType.Default;
 
         public string buildingName = "House";
         TMP_Text txt_name;
@@ -77,10 +77,15 @@ namespace SunHeTBS
         void OnMouseDown()
         {
             // This will be called when the NPC is clicked
-            Debug.Log($"Clicked on Building!" + this.name);
-
+            if (this.logicBuilding == null) return;
+            //Debug.Log($"Clicked on Building!" + this.name);
+            if (false == FUIManager.Inst.IsWindowOpening(FUIDef.FWindow.BuildingInfo))
+            {
+                FUIManager.Inst.ShowUI<UIPage_BuildingInfo>(FUIDef.FWindow.BuildingInfo, null, this.logicBuilding.sid);
+            }
 
         }
         #endregion
+
     }
 }

@@ -230,6 +230,18 @@ namespace SunHeTBS
         {
             return GridManager.instance.IsInBounds(pos);
         }
+
+        public Building FindBuildingWithEffect(cfg.SLG.BuildingEffect effect)
+        {
+            foreach (var bd in this.buildings)
+            {
+                if (bd.BdCfg.Effect == effect)
+                {
+                    return bd;
+                }
+            }
+            return null;
+        }
         #endregion
 
     }

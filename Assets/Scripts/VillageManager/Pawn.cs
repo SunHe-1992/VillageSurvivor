@@ -86,7 +86,6 @@ namespace SunHeTBS
             {
                 sm.Update();
                 UpdateCharacter(dt);
-                HandleMoving();
 
                 hud = this.nickName;
                 //hud += $"{sm.currentState.name}, ";
@@ -225,9 +224,9 @@ namespace SunHeTBS
                 staminaValue -= staminaConsumeSpeed * Time.deltaTime;
             }
 
-            if (IsFatigue()) //need to sleep
+            if (IsFatigue() && HavePlaceToRest()) //need to sleep
             {
-                ChangeState(s_sleep);
+                GoToRest();
                 return;
             }
 
@@ -237,14 +236,9 @@ namespace SunHeTBS
             }
             else
             {
-                if (HaveFood() && IsHungary())//need to eat
+                if (HaveFood() && IsHungary() && HavePlaceToEat())//need to eat
                 {
-                    ChangeState(s_eat);
-                    return;
-                }
-                if (HaveFood() == false) //need to produce food
-                {
-                    ChangeState(s_work);
+                    GoToEat();
                     return;
                 }
             }
@@ -282,6 +276,15 @@ namespace SunHeTBS
         /// patrol
         /// </summary>
         StateMachine.State s_patrol;
+        /// <summary>
+        /// moving
+        /// </summary>
+        StateMachine.State s_move;
+
+        /// <summary>
+        /// when reached destination,change to this state
+        /// </summary>
+        StateMachine.State pendingState = null;
         Dictionary<PawnState, StateMachine.State> s_states;
         public void InitStateMachine()
         {
@@ -292,7 +295,21 @@ namespace SunHeTBS
             s_Idle = sm.CreateState("Idle");
             s_Idle.OnEnter = delegate
             {
-                RandomIdleWaitTime();
+                if (this.position == Vector3.zero) //in the initial pos, go to somewhere else
+                {
+                    GoToRandomPlace();
+                    return;
+                }
+                //when Enter idel:
+                int ranInt = Random.Range(0, 100);
+                if (ranInt < 50)
+                {
+                    GoToRandomPlace();
+                }
+                else
+                {
+                    RandomIdleWaitTime(); //wait for seconds
+                }
             };
             s_Idle.OnExit = delegate
             {
@@ -302,40 +319,34 @@ namespace SunHeTBS
             s_sleep = sm.CreateState("Sleep");
             s_sleep.OnEnter = delegate
             {
-                var pos = MapBuildingMgr.Inst.GetBuildingInteractPosition(s_sleep.targetBuildingType);
-                SetDestnation(pos);
             };
             s_sleep.OnExit = delegate
             {
             };
             s_sleep.OnFrame = HandleSleep;
-            s_sleep.targetBuildingType = BuildingEffectType.Sleep;
+            s_sleep.targetBuildingType = cfg.SLG.BuildingEffect.Rest;
 
 
             s_eat = sm.CreateState("Eat");
             s_eat.OnEnter = delegate
             {
-                var pos = MapBuildingMgr.Inst.GetBuildingInteractPosition(s_eat.targetBuildingType);
-                SetDestnation(pos);
             };
             s_eat.OnExit = delegate
             {
             };
             s_eat.OnFrame = HandleEat;
-            s_eat.targetBuildingType = BuildingEffectType.Eat;
+            s_eat.targetBuildingType = cfg.SLG.BuildingEffect.Canteen;
 
 
-            s_work = sm.CreateState("Produce");
+            s_work = sm.CreateState("Work");
             s_work.OnEnter = delegate
             {
-                var pos = MapBuildingMgr.Inst.GetBuildingInteractPosition(s_work.targetBuildingType);
-                SetDestnation(pos);
             };
             s_work.OnExit = delegate
             {
             };
-            s_work.OnFrame = HandleProduce;
-            s_work.targetBuildingType = BuildingEffectType.Work;
+            s_work.OnFrame = HandleWork;
+
 
 
             s_patrol = sm.CreateState("Patrol");
@@ -346,6 +357,12 @@ namespace SunHeTBS
             {
             };
             s_patrol.OnFrame = HandlePatrol;
+
+            s_move = sm.CreateState("Move");
+            s_move.OnEnter = delegate { };
+            s_move.OnExit = delegate { };
+            s_move.OnFrame = HandleMoving;
+
 
             s_states[PawnState.Idle] = s_Idle;
             s_states[PawnState.Sleep] = s_sleep;
@@ -370,6 +387,53 @@ namespace SunHeTBS
         }
         #endregion
 
+        void GoToRest()
+        {
+            if (sm.currentState == s_sleep)
+                return;
+
+            var bd = BattleDriver.Inst.FindBuildingWithEffect(s_sleep.targetBuildingType);
+            if (bd != null)
+            {
+                var pos = bd.controller.GetInteractionPos();
+                SetDestnation(pos);
+                pendingState = s_sleep;
+                ChangeState(s_move);
+            }
+        }
+
+        void GoToEat()
+        {
+            if (sm.currentState == s_eat)
+                return;
+            var bd = BattleDriver.Inst.FindBuildingWithEffect(s_eat.targetBuildingType);
+            if (bd != null)
+            {
+                var pos = bd.controller.GetInteractionPos();
+                SetDestnation(pos);
+                pendingState = s_eat;
+                ChangeState(s_move);
+            }
+        }
+        void GoToWork()
+        {
+            if (sm.currentState == s_work)
+                return;
+            if (this.workingBuilding != null)
+            {
+                var pos = workingBuilding.controller.GetInteractionPos();
+                SetDestnation(pos);
+                pendingState = s_work;
+                ChangeState(s_move);
+            }
+        }
+        void GoToRandomPlace()
+        {
+            var pos = GetRandomWaypointPos();
+            SetDestnation(pos);
+            pendingState = s_Idle;
+            ChangeState(s_move);
+        }
         #region random switch stats
 
         Dictionary<int, StateMachine.State> dicStates;
@@ -413,9 +477,9 @@ namespace SunHeTBS
 
         #region state: Produce
         float foodProduceSpeed = 9.0f;
-        private void HandleProduce()
+        private void HandleWork()
         {
-            if (this.workingBuilding == null || this.workingOrder == null)
+            if (!HaveWorkTodo())
             {
                 ChangeState(s_Idle);
             }
@@ -423,6 +487,19 @@ namespace SunHeTBS
             {
                 foodStorage += foodProduceSpeed * Time.deltaTime;
             }
+        }
+        bool HaveWorkTodo()
+        {
+            return (this.workingBuilding != null && this.workingOrder != null);
+        }
+        float DistanceToWorkingPosition()
+        {
+            Vector3 pos1 = this.workingBuilding.controller.GetInteractionPos();
+            return Vector3.Distance(pos1, this.position);
+        }
+        bool IsNearWorkingPosition()
+        {
+            return DistanceToWorkingPosition() < 0.1f;
         }
         #endregion
 
@@ -446,6 +523,14 @@ namespace SunHeTBS
                 return;
             }
         }
+        bool HavePlaceToEat()
+        {
+            return null != BattleDriver.Inst.FindBuildingWithEffect(cfg.SLG.BuildingEffect.Canteen);
+        }
+        bool HavePlaceToRest()
+        {
+            return null != BattleDriver.Inst.FindBuildingWithEffect(cfg.SLG.BuildingEffect.Rest);
+        }
         #endregion
 
         #region state: Idle 
@@ -458,8 +543,14 @@ namespace SunHeTBS
         {
             if (s_Idle.elpsedTime > idleWaitTime)
             {
-                ChangeState(s_work);
-                return;
+                if (HaveWorkTodo())
+                {
+                    GoToWork();
+                }
+                else
+                {
+
+                }
             }
             else
             {
@@ -493,7 +584,15 @@ namespace SunHeTBS
             }
             else //find next node pos
             {
-                targetPos = GetNextNodePos();
+                var (newPos, haveNext) = GetNextNodePos();
+                if (haveNext)
+                {
+                    targetPos = newPos;
+                }
+                else
+                {
+                    ChangeState(pendingState == null ? s_Idle : pendingState);
+                }
             }
         }
 
@@ -612,17 +711,19 @@ namespace SunHeTBS
             else
                 return position;
         }
-        Vector3 GetNextNodePos()
+        (Vector3, bool) GetNextNodePos()
         {
+            bool haveNext = true;
             pathArrayIndex++;
             if (pathArrayIndex < pathArray.Count)
             {
                 var node = pathArray[pathArrayIndex];
-                return node.position;
+                return (node.position, haveNext);
             }
             else
             {
-                return position;
+                haveNext = false;
+                return (Vector3.zero, haveNext);
             }
         }
 

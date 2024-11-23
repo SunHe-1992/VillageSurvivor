@@ -146,7 +146,7 @@ public class FUIManager : ISingleton
         m_openingWindows.Add(winType);
     }
 
-    private bool IsWindowOpening(FUIDef.FWindow winType)
+    public bool IsWindowOpening(FUIDef.FWindow winType)
     {
         return m_openingWindows.Contains(winType);
     }

@@ -74,6 +74,7 @@ namespace SunHeTBS
         #region on click
         void OnMouseDown()
         {
+            if (this._pawn == null) return;
             // This will be called when the NPC is clicked
             Debug.Log($"Clicked on NPC!" + this.name);
             BattleDriver.Inst.clickedPawn = this._pawn;

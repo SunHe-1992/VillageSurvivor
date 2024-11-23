@@ -21,6 +21,7 @@ public sealed partial class BuildingData : Luban.BeanBase
         { if(!_buf["Name"].IsString) { throw new SerializationException(); }  Name = _buf["Name"]; }
         { if(!_buf["Visible"].IsBoolean) { throw new SerializationException(); }  Visible = _buf["Visible"]; }
         { if(!_buf["Category"].IsString) { throw new SerializationException(); }  Category = _buf["Category"]; }
+        { if(!_buf["Effect"].IsNumber) { throw new SerializationException(); }  Effect = (SLG.BuildingEffect)_buf["Effect"].AsInt; }
         { if(!_buf["WorkLoad"].IsNumber) { throw new SerializationException(); }  WorkLoad = _buf["WorkLoad"]; }
         { if(!_buf["Price"].IsNumber) { throw new SerializationException(); }  Price = _buf["Price"]; }
         { if(!_buf["ModelName"].IsString) { throw new SerializationException(); }  ModelName = _buf["ModelName"]; }
@@ -39,6 +40,7 @@ public sealed partial class BuildingData : Luban.BeanBase
     public readonly string Name;
     public readonly bool Visible;
     public readonly string Category;
+    public readonly SLG.BuildingEffect Effect;
     public readonly float WorkLoad;
     public readonly float Price;
     public readonly string ModelName;
@@ -57,6 +59,7 @@ public sealed partial class BuildingData : Luban.BeanBase
         
         
         
+        
     }
 
     public override string ToString()
@@ -66,6 +69,7 @@ public sealed partial class BuildingData : Luban.BeanBase
         + "Name:" + Name + ","
         + "Visible:" + Visible + ","
         + "Category:" + Category + ","
+        + "Effect:" + Effect + ","
         + "WorkLoad:" + WorkLoad + ","
         + "Price:" + Price + ","
         + "ModelName:" + ModelName + ","

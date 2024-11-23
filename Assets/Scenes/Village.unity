@@ -186,7 +186,6 @@ GameObject:
   - component: {fileID: 65932338}
   - component: {fileID: 65932341}
   - component: {fileID: 65932340}
-  - component: {fileID: 65932339}
   m_Layer: 0
   m_Name: Sphere (4)
   m_TagString: WayPoint
@@ -209,27 +208,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1787875276}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &65932339
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 65932337}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &65932340
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -237,7 +215,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 65932337}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -862,6 +840,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Simple House
       objectReference: {fileID: 0}
+    - target: {fileID: 8964054922452618063, guid: cafea7803c7f7e0459a5b3f0277eaa5f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -894,7 +876,6 @@ GameObject:
   - component: {fileID: 753264210}
   - component: {fileID: 753264213}
   - component: {fileID: 753264212}
-  - component: {fileID: 753264211}
   m_Layer: 0
   m_Name: Sphere (5)
   m_TagString: WayPoint
@@ -917,27 +898,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1787875276}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &753264211
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 753264209}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &753264212
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -945,7 +905,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 753264209}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -999,7 +959,6 @@ GameObject:
   - component: {fileID: 775808910}
   - component: {fileID: 775808913}
   - component: {fileID: 775808912}
-  - component: {fileID: 775808911}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: WayPoint
@@ -1022,27 +981,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1787875276}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &775808911
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 775808909}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &775808912
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1050,7 +988,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 775808909}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1701,7 +1639,6 @@ GameObject:
   - component: {fileID: 1564604305}
   - component: {fileID: 1564604308}
   - component: {fileID: 1564604307}
-  - component: {fileID: 1564604306}
   m_Layer: 0
   m_Name: Sphere (1)
   m_TagString: WayPoint
@@ -1724,27 +1661,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1787875276}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &1564604306
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1564604304}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1564604307
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1752,7 +1668,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1564604304}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1806,7 +1722,6 @@ GameObject:
   - component: {fileID: 1586845054}
   - component: {fileID: 1586845057}
   - component: {fileID: 1586845056}
-  - component: {fileID: 1586845055}
   m_Layer: 0
   m_Name: Sphere (2)
   m_TagString: WayPoint
@@ -1829,27 +1744,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1787875276}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &1586845055
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1586845053}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1586845056
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1857,7 +1751,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1586845053}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1972,6 +1866,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canteen
       objectReference: {fileID: 0}
+    - target: {fileID: 8964054922452618063, guid: cafea7803c7f7e0459a5b3f0277eaa5f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2004,7 +1902,6 @@ GameObject:
   - component: {fileID: 1730247844}
   - component: {fileID: 1730247847}
   - component: {fileID: 1730247846}
-  - component: {fileID: 1730247845}
   m_Layer: 0
   m_Name: Sphere (3)
   m_TagString: WayPoint
@@ -2027,27 +1924,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1787875276}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &1730247845
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1730247843}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1730247846
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2055,7 +1931,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1730247843}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -2148,7 +2024,6 @@ GameObject:
   - component: {fileID: 1945299749}
   - component: {fileID: 1945299752}
   - component: {fileID: 1945299751}
-  - component: {fileID: 1945299750}
   m_Layer: 0
   m_Name: Sphere (7)
   m_TagString: WayPoint
@@ -2171,27 +2046,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1787875276}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &1945299750
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1945299748}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1945299751
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2199,7 +2053,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1945299748}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -2253,7 +2107,6 @@ GameObject:
   - component: {fileID: 1959372931}
   - component: {fileID: 1959372934}
   - component: {fileID: 1959372933}
-  - component: {fileID: 1959372932}
   m_Layer: 0
   m_Name: Sphere (6)
   m_TagString: WayPoint
@@ -2276,27 +2129,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1787875276}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &1959372932
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1959372930}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1959372933
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2304,7 +2136,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1959372930}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
