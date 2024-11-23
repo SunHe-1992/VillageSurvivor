@@ -117,10 +117,10 @@ public class UIPage_BuildingInfo : FUIBase
     private void RefreshWorkers()
     {
         int workersCount = bdInfo.workerList.Count;
-        string workerStr = $"Workers count {workersCount}";
+        string workerStr = $"Workers count {workersCount}\n";
         foreach (var worker in this.bdInfo.workerList)
         {
-            workerStr += worker.nickName.ToString() + " ";
+            workerStr += worker.nickName.ToString() + "\n";
         }
 
         ui.txt_workers.text = workerStr;
