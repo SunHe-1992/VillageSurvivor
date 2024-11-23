@@ -128,6 +128,7 @@ namespace SunHeTBS
         {
             this.workerList.Add(worker);
             worker.workingPlace = this;
+            worker.workingBuilding = this;
         }
         public void RemoveWorker(Pawn worker)
         {
@@ -297,6 +298,7 @@ namespace SunHeTBS
         {
             this.workerList.Add(p);
             p.workingOrder = this;
+            p.workingBuilding = this.bd;
 
         }
         public void RemoveWorker(Pawn p)
@@ -306,6 +308,8 @@ namespace SunHeTBS
             {
                 p.workingOrder = null;
             }
+            if (p.workingBuilding == this.bd)
+                p.workingBuilding = null;
         }
     }
 }

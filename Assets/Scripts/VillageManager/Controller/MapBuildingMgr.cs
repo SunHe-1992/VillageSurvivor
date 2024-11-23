@@ -8,6 +8,7 @@ namespace SunHeTBS
         public static MapBuildingMgr Inst;
         public List<MapBuilding> buildingList;
         public GameObject VillagerPrefab;
+        public GameObject BuildingPrefab;
         private void Awake()
         {
             Inst = this;
@@ -49,6 +50,7 @@ namespace SunHeTBS
         }
 
 
+      
     }
 
 }

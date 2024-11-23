@@ -7,6 +7,24 @@ namespace SunHeTBS
 {
     public class MapBuilding : MonoBehaviour
     {
+
+        #region logic building
+        public int buildingCfgId = 0;
+        Building logicBuilding;
+        void CreateLogicBuilding()
+        {
+            var cfg = ConfigManager.table.TbBuilding.GetOrDefault(buildingCfgId);
+            if (cfg != null)
+            {
+                //Debug.Log(cfg.ToString());
+                logicBuilding = new Building(buildingCfgId);
+                BattleDriver.Inst.buildings.Add(logicBuilding);
+                this.buildingName = logicBuilding.BdCfg.Name;
+                if (txt_name != null)
+                    txt_name.text = buildingName;
+            }
+        }
+        #endregion
         public BuildingEffectType effect = BuildingEffectType.Default;
 
         public string buildingName = "House";
@@ -16,6 +34,10 @@ namespace SunHeTBS
         Transform interactionTrans;
         // Start is called before the first frame update
         void Start()
+        {
+            Init();
+        }
+        public void Init()
         {
             if (this.transform.Find("progress") != null)
                 pBar = this.transform.Find("progress").GetComponent<UIProgressBar>();
@@ -29,8 +51,9 @@ namespace SunHeTBS
                 this.interactionTrans = this.transform.Find("interactionTrans");
             }
             SetProgress(0f);
-        }
+            CreateLogicBuilding();
 
+        }
         // Update is called once per frame
         void Update()
         {
@@ -55,8 +78,8 @@ namespace SunHeTBS
         {
             // This will be called when the NPC is clicked
             Debug.Log($"Clicked on Building!" + this.name);
-            
-          
+
+
         }
         #endregion
     }

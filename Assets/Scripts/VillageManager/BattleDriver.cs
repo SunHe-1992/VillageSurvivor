@@ -50,7 +50,7 @@ namespace SunHeTBS
             }
             deltaTime = Time.deltaTime;
             OnBattleFrameUpdate(deltaTime);
-
+            UpdateDecidingBuildingLocation();
         }
 
         private void OnBattleFrameUpdate(float deltaTime)
@@ -166,8 +166,71 @@ namespace SunHeTBS
             //todo clean data for a new game
 
         }
+        public void CreateMapBuilding(int buildingId, Vector3 position)
+        {
+            var bdObj = GameObject.Instantiate(MapBuildingMgr.Inst.BuildingPrefab);
+            ProcessCreateMapBuilding(buildingId, position, bdObj);
+        }
+
+        void ProcessCreateMapBuilding(int buildingId, Vector3 position, GameObject obj)
+        {
+            var bdObj = obj;
+            bdObj.transform.position = position;
+            var mbScript = bdObj.GetComponent<MapBuilding>();
+            mbScript.buildingCfgId = buildingId;
+            if (obj.TryGetComponent<FollowMouse>(out FollowMouse fmComp))
+            {
+                fmComp.enabled = false; //disable this script
+            }
+            bdObj.transform.parent = MapBuildingMgr.Inst.transform;
+            if (bdObj.TryGetComponent<MapBuilding>(out MapBuilding mbComp))
+            {
+                mbComp.Init();
+            }
+        }
         #endregion
 
+
+        #region building: select location
+        GameObject buildingGizmos = null;
+        public int pendingBuildingId = 0;
+        public bool DecidingBuildingLocation = false;
+        public void EnterDecidingBuidlingLocation(int id)
+        {
+            pendingBuildingId = id;
+            DecidingBuildingLocation = true;
+            buildingGizmos = GameObject.Instantiate(MapBuildingMgr.Inst.BuildingPrefab);
+            buildingGizmos.AddComponent<FollowMouse>();
+            var trans = buildingGizmos.transform;
+            trans.position = Vector3.zero;
+            trans.rotation = Quaternion.identity;
+            trans.localScale = Vector3.one;
+            buildingGizmos.name = "buildingGizmos";
+        }
+        public void EndDecidingBuidlingLocation(bool confirmBuilding)
+        {
+            if (buildingGizmos != null && CheckBuildingLocationCorrect(buildingGizmos.transform.position))
+            {
+                DecidingBuildingLocation = false;
+                ProcessCreateMapBuilding(pendingBuildingId, buildingGizmos.transform.position, buildingGizmos);
+                buildingGizmos = null;
+
+            }
+        }
+        void UpdateDecidingBuildingLocation()
+        {
+            if (DecidingBuildingLocation == false)
+            {
+                EndDecidingBuidlingLocation(false);
+                return;
+            }
+
+        }
+        bool CheckBuildingLocationCorrect(Vector3 pos)
+        {
+            return GridManager.instance.IsInBounds(pos);
+        }
+        #endregion
 
     }
 }

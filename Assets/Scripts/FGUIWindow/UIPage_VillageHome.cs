@@ -88,6 +88,7 @@ public class UIPage_VillageHome : FUIBase
         string msg = "";
         //score:
         msg += $"score={TBSPlayer.UserDetail.score}";
+        msg += $"DecidingBuildingLocation={BattleDriver.Inst.DecidingBuildingLocation}";
 
         ui.txt_hud.text = msg;
 

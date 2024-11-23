@@ -17,6 +17,7 @@ namespace SunHeTBS
         Gender gender = Gender.Male;
         int age = 18;
         public Order workingOrder = null;
+        public Building workingBuilding = null;
         /// <summary>
         /// add work load for every frame
         /// </summary>
@@ -414,7 +415,14 @@ namespace SunHeTBS
         float foodProduceSpeed = 9.0f;
         private void HandleProduce()
         {
-            foodStorage += foodProduceSpeed * Time.deltaTime;
+            if (this.workingBuilding == null || this.workingOrder == null)
+            {
+                ChangeState(s_Idle);
+            }
+            else
+            {
+                foodStorage += foodProduceSpeed * Time.deltaTime;
+            }
         }
         #endregion
 
@@ -450,20 +458,15 @@ namespace SunHeTBS
         {
             if (s_Idle.elpsedTime > idleWaitTime)
             {
-                //int stateIdx = GetWeightedRandomIndex(this.probabilitiesList);
-                //if (dicStates.ContainsKey(stateIdx))
-                //{
-                //    string sName = dicStates[stateIdx].name;
-                //    print($"randomly changed to {sName}");
-
-                //    ChangeState(dicStates[stateIdx]);
-                //}
-                //else
-                //{
-                //    ChangeState(dicStates[0]);
-                //}
                 ChangeState(s_work);
                 return;
+            }
+            else
+            {
+                if (IsNearTargetPos()) //random walk to a waypoint
+                {
+                    SetDestnation(GetRandomWaypointPos());
+                }
             }
         }
 
@@ -548,6 +551,20 @@ namespace SunHeTBS
 
             // Return the position of the next waypoint
             return waypointList[wpIndex];
+        }
+        Vector3 GetRandomWaypointPos()
+        {
+            // Ensure the list is not empty to avoid errors
+            if (waypointList == null || waypointList.Count == 0)
+            {
+                Debug.LogWarning("Waypoint list is empty or null!");
+                return Vector3.zero; // Return a default value if the list is empty
+            }
+            // Generate a random index within the range of the waypoint list
+            int randomIndex = Random.Range(0, waypointList.Count);
+
+            // Return the position of the randomly selected waypoint
+            return waypointList[randomIndex];
         }
 
         public void SetDestnation(Vector3 pos)

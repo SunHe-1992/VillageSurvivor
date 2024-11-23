@@ -86,14 +86,20 @@ public class UIPage_BuildingUI : FUIBase
     {
         int idx = ui.cbox_building.selectedIndex;
         int bdId = int.Parse(list_id[idx]);
-        var cfg = ConfigManager.table.TbBuilding.DataList[idx];
-        Debug.Log(cfg.ToString());
+        var cfg = ConfigManager.table.TbBuilding.GetOrDefault(idx);
+        if (cfg != null)
+        {
+            Debug.Log(cfg.ToString());
+            OnBtnClose();
+            DelayInvoker.Inst.DelayInvoke(
+                () => { BattleDriver.Inst.EnterDecidingBuidlingLocation(bdId); }
+                , 0.2f);
+        }
         //TBSPlayer.CreateBuilding(cfg.ID);
+        //var bd = new Building(bdId);
+        //BattleDriver.Inst.buildings.Add(bd);
+        //RefreshContent();
 
-        var bd = new Building(bdId);
-
-        BattleDriver.Inst.buildings.Add(bd);
-        RefreshContent();
     }
     private void RendererUserBuilding(int index, GObject item)
     {

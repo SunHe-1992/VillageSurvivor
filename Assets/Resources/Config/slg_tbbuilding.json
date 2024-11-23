@@ -198,5 +198,25 @@
     "Price": 0,
     "ModelName": "Silo",
     "Description": "Store grain and other agricultural products."
+  },
+  {
+    "ID": 21,
+    "Name": "Canteen",
+    "Visible": true,
+    "Category": "Residential",
+    "WorkLoad": 100,
+    "Price": 0,
+    "ModelName": "Canteen",
+    "Description": "People eat here."
+  },
+  {
+    "ID": 22,
+    "Name": "Simple House",
+    "Visible": true,
+    "Category": "Residential",
+    "WorkLoad": 100,
+    "Price": 0,
+    "ModelName": "Simple House",
+    "Description": "People rest here."
   }
 ]
