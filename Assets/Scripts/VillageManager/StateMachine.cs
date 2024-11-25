@@ -7,7 +7,7 @@ namespace SunHeTBS
 {
     public class StateMachine
     {
-      
+
 
         public class State
         {
@@ -47,8 +47,10 @@ namespace SunHeTBS
 
             return st;
         }
-        public void Update()
+        public float deltaTime;
+        public void Update(float dt)
         {
+            deltaTime = dt;
             if (states.Count == 0 || initialState == null)
             {
                 Debug.LogError("state machine with no states!");
@@ -61,7 +63,7 @@ namespace SunHeTBS
             else
             {
                 currentState.OnFrame.Invoke();
-                currentState.elpsedTime += Time.deltaTime;
+                currentState.elpsedTime += deltaTime;
             }
         }
 

@@ -20,6 +20,12 @@ public class UIPage_VillageHome : FUIBase
         ui.btn_AddVillager.onClick.Set(OnBtnAddVillager);
         ui.pawnHUDcomp.btn_close.onClick.Set(OnPawnHUDClose);
         ui.btn_help.onClick.Set(OnBtnHelpClick);
+
+        var spdCtrl = ui.speedCtrl;
+        spdCtrl.btn_pause.onClick.Set(OnBtnSpeedPause);
+        spdCtrl.btn_x1.onClick.Set(OnBtnSpeedX1);
+        spdCtrl.btn_x5.onClick.Set(OnBtnSpeedX5);
+        spdCtrl.btn_x10.onClick.Set(OnBtnSpeedX10);
     }
 
     private void OnBtnHelpClick(EventContext context)
@@ -100,6 +106,8 @@ public class UIPage_VillageHome : FUIBase
         {
             RefreshPawnHUD();
         }
+
+        ui.speedCtrl.txt_speed.text = $"Speed:{BattleDriver.Inst.speedScale}";
     }
     #region pawn HUD
     public static bool showPawnHUD = false;
@@ -127,6 +135,26 @@ public class UIPage_VillageHome : FUIBase
     {
         ShowPawnHUD(false);
         this.displayingPawn = null;
+    }
+    #endregion
+
+    #region speed control
+
+    void OnBtnSpeedPause()
+    {
+        BattleDriver.Inst.speedScale = 0;
+    }
+    void OnBtnSpeedX1()
+    {
+        BattleDriver.Inst.speedScale = 1;
+    }
+    void OnBtnSpeedX5()
+    {
+        BattleDriver.Inst.speedScale = 5;
+    }
+    void OnBtnSpeedX10()
+    {
+        BattleDriver.Inst.speedScale = 10;
     }
     #endregion
 }

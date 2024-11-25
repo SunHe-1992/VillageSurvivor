@@ -5,7 +5,7 @@ using FairyGUI;
 using UnityEngine;
 using UniFramework.Event;
 using PackageVillage;
-
+using SunHeTBS;
 public class UIPage_GameOverUI : FUIBase
 {
 
@@ -26,11 +26,16 @@ public class UIPage_GameOverUI : FUIBase
 
     private void OnBtnPlayAgain(EventContext context)
     {
-        throw new NotImplementedException();
+        BattleDriver.Inst.RestartGame();
+        BattleDriver.Inst.running = true;
+        OnBtnClose();
     }
 
     private void OnBtnMainMenu(EventContext context)
     {
+        BattleDriver.Inst.RestartGame();
+        BattleDriver.Inst.running = true;
+        OnBtnClose();
         FUIManager.Inst.ShowUI<UIPage_VillageMenu>(FUIDef.FWindow.VillageMenuUI);
     }
 

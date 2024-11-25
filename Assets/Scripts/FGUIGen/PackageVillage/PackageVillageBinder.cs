@@ -34,6 +34,7 @@ namespace PackageVillage
             UIObjectFactory.SetPackageItemExtension(UI_BtnNumSet_All.URL, typeof(UI_BtnNumSet_All));
             UIObjectFactory.SetPackageItemExtension(UI_BuildingInfo.URL, typeof(UI_BuildingInfo));
             UIObjectFactory.SetPackageItemExtension(UI_ProgressBar1.URL, typeof(UI_ProgressBar1));
+            UIObjectFactory.SetPackageItemExtension(UI_SpeedController.URL, typeof(UI_SpeedController));
             UIObjectFactory.SetPackageItemExtension(UI_Dropdown.URL, typeof(UI_Dropdown));
             UIObjectFactory.SetPackageItemExtension(UI_Dropdown2.URL, typeof(UI_Dropdown2));
         }

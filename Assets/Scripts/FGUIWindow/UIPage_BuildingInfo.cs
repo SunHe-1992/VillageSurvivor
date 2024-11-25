@@ -75,6 +75,8 @@ public class UIPage_BuildingInfo : FUIBase
 
     void RefreshContent()
     {
+        string bdName = bdInfo.BdCfg.Name;
+        ui.frame.title = bdName;
 
 
     }

@@ -56,7 +56,10 @@ namespace SunHeTBS
         private void OnBattleFrameUpdate(float deltaTime)
         {
             if (running)
+            {
                 DriveEntities(deltaTime);
+                CheckGameOver();
+            }
         }
 
         private void CheckGMKey()
@@ -87,18 +90,19 @@ namespace SunHeTBS
         }
         void DriveEntities(float dt)
         {
+            float deltaTime = dt * speedScale;
             if (buildings != null)
             {
                 foreach (var bd in buildings)
                 {
-                    bd.Update(dt);
+                    bd.Update(deltaTime);
                 }
             }
             if (pawnList != null)
             {
                 foreach (var p in pawnList)
                 {
-                    p.Update(dt);
+                    p.Update(deltaTime);
                 }
             }
         }
@@ -124,7 +128,7 @@ namespace SunHeTBS
             Pawn p = null;
             foreach (var pawn in this.pawnList)
             {
-                if (pawn.workingPlace == null)
+                if (pawn.isDead == false && pawn.workingPlace == null)
                 {
                     p = pawn;
                     break;
@@ -157,6 +161,7 @@ namespace SunHeTBS
             int deathCount = GetDeadPawnCount();
             if (deathCount >= deathCountMax)
             {
+                this.running = false;
                 //gameover;
                 FUIManager.Inst.ShowUI<UIPage_GameOverUI>(FUIDef.FWindow.GameOverUI);
             }
@@ -244,5 +249,21 @@ namespace SunHeTBS
         }
         #endregion
 
+        #region speed control
+        public float speedScale = 1f;
+
+
+        #endregion
+        /// <summary>
+        /// eat to decrease. produce to increase
+        /// </summary>
+        public float foodStorage = 100f;
+
+        public void RestartGame()
+        {
+            foodStorage = 100f;
+            pawnList.Clear();
+            buildings.Clear();
+        }
     }
 }

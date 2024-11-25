@@ -20,6 +20,7 @@ namespace SunHeTBS
             if (this._pawn == null)
             {
                 this._pawn = new Pawn();
+                _pawn.Controller = this;
                 BattleDriver.Inst.InsertPawn(this._pawn);
                 this.gameObject.name = this._pawn.nickName;
             }

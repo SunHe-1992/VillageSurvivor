@@ -11,6 +11,7 @@ namespace SunHeTBS
     public class Pawn : GameEntity
     {
         #region worker attributes
+        public NPCController Controller;
         //this pawn is working in this place
         public Building workingPlace;
         public string nickName = "";
@@ -78,7 +79,7 @@ namespace SunHeTBS
         {
             if (this.isDead == false)
             {
-                sm.Update();
+                sm.Update(dt);
                 UpdateCharacter(dt);
 
                 hud = this.nickName;
@@ -131,10 +132,7 @@ namespace SunHeTBS
         /// </summary>
         public float staminaValue = 60f;
 
-        /// <summary>
-        /// eat to decrease. produce to increase
-        /// </summary>
-        float foodStorage = 100f;
+
 
         float hungerConsumeSpeed = 2.5f;
         float hungerRecoverSpeed = 33f;
@@ -151,7 +149,7 @@ namespace SunHeTBS
         }
         bool HaveFood()
         {
-            return this.foodStorage > 0f;
+            return BattleDriver.Inst.foodStorage > 0f;
         }
 
         bool IsSleepEnough()
@@ -211,11 +209,11 @@ namespace SunHeTBS
                 float coefficient = 1.0f;
                 if (curState() == PawnState.Sleep) //if sleeping, energy cost become 66% less
                     coefficient = 0.33f;
-                bodyEnergyValue -= coefficient * hungerConsumeSpeed * Time.deltaTime;
+                bodyEnergyValue -= coefficient * hungerConsumeSpeed * dt;
             }
             if (staminaValue > 0)
             {
-                staminaValue -= staminaConsumeSpeed * Time.deltaTime;
+                staminaValue -= staminaConsumeSpeed * dt;
             }
 
             if (IsFatigue() && HavePlaceToRest()) //need to sleep
@@ -461,7 +459,7 @@ namespace SunHeTBS
         #region state: sleep
         private void HandleSleep()
         {
-            this.staminaValue += this.staminaRecoverSpeed * Time.deltaTime;
+            this.staminaValue += this.staminaRecoverSpeed * sm.deltaTime;
             if (IsSleepEnough())
             {
                 ChangeState(s_Idle);
@@ -479,7 +477,7 @@ namespace SunHeTBS
             }
             else
             {
-                foodStorage += foodProduceSpeed * Time.deltaTime;
+                BattleDriver.Inst.foodStorage += foodProduceSpeed * sm.deltaTime;
             }
         }
         bool HaveWorkTodo()
@@ -503,8 +501,8 @@ namespace SunHeTBS
         {
             if (HaveFood())
             {
-                foodStorage -= foodConsumeSpeed * Time.deltaTime;
-                this.bodyEnergyValue += this.hungerRecoverSpeed * Time.deltaTime;
+                BattleDriver.Inst.foodStorage -= foodConsumeSpeed * sm.deltaTime;
+                this.bodyEnergyValue += this.hungerRecoverSpeed * sm.deltaTime;
             }
             else
             {
@@ -553,6 +551,8 @@ namespace SunHeTBS
                     SetDestnation(GetRandomWaypointPos());
                 }
             }
+            BattleDriver.Inst.foodStorage += foodProduceSpeed * sm.deltaTime;
+
         }
 
         /// <summary>
@@ -573,7 +573,7 @@ namespace SunHeTBS
             if (IsNearTargetPos() == false) //go to target pos
             {
                 Vector3 moveNorm = (targetPos - position).normalized;
-                Vector3 moveDelta = moveNorm * move_speed * Time.deltaTime;
+                Vector3 moveDelta = moveNorm * move_speed * sm.deltaTime;
                 position += moveDelta;
             }
             else //find next node pos
@@ -588,6 +588,7 @@ namespace SunHeTBS
                     ChangeState(pendingState == null ? s_Idle : pendingState);
                 }
             }
+            BattleDriver.Inst.foodStorage += foodProduceSpeed * sm.deltaTime;
         }
 
         private void HandlePatrol()
