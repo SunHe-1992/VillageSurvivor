@@ -23,7 +23,7 @@ namespace SunHeTBS
         {
             Inst = UniSingleton.CreateSingleton<BattleDriver>();
             Inst.InitMedievalData();
-
+  
 
         }
         public void OnCreate(object createParam)
