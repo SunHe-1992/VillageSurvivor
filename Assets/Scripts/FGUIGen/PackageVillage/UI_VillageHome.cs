@@ -15,6 +15,7 @@ namespace PackageVillage
         public UI_Button_Common_11 btn_AddVillager;
         public UI_SpeedController speedCtrl;
         public UI_PawnHUD pawnHUDcomp;
+        public UI_Button_Common_11 btn_platform;
         public const string URL = "ui://786ck8sbhm4dhhk0tg";
 
         public static UI_VillageHome CreateInstance()
@@ -34,6 +35,7 @@ namespace PackageVillage
             btn_AddVillager = (UI_Button_Common_11)GetChild("btn_AddVillager");
             speedCtrl = (UI_SpeedController)GetChild("speedCtrl");
             pawnHUDcomp = (UI_PawnHUD)GetChild("pawnHUDcomp");
+            btn_platform = (UI_Button_Common_11)GetChild("btn_platform");
         }
     }
 }

@@ -46,6 +46,8 @@ namespace SunHeTBS
         {
             instance = this;
             ComputeGrid();
+
+            FillRandomMapObjects();
         }
         void ComputeGrid()
         {
@@ -169,6 +171,65 @@ namespace SunHeTBS
                 Vector3 endPos = startPos + height * new Vector3(0.0f, 0.0f, 1.0f);
                 Debug.DrawLine(startPos, endPos, color);
             }
+        }
+
+        void FillRandomMapObjects()
+        {
+            CleanAllObj();
+            for (int i = 0; i < numOfRows + 1; i++)
+            {
+                for (int j = 0; j < numOfColumns + 1; j++)
+                {
+                    if (IsFill())
+                    {
+                        Vector3 pos = new Vector3(
+                            j * gridCellSize + +Random.Range(0f, 1f),
+                            0f,
+                            i * gridCellSize + Random.Range(0f, 1f)
+                            );
+                        FillOneMapObject(pos, RandomObj());
+                    }
+                }
+            }
+
+        }
+        [SerializeField]
+        [Tooltip("0-100, random objects filling percent")]
+        public float fillPercent = 30f;
+        bool IsFill()
+        {
+            return Random.Range(0f, 100f) < fillPercent;
+        }
+        void CleanAllObj()
+        {
+            if (NewObjParent != null)
+            {
+                NewObjParent.SetActive(false);
+                Destroy(NewObjParent);
+            }
+        }
+        GameObject RandomObj()
+        {
+            int idx = Random.Range(0, mapObjList.Count);
+            return mapObjList[idx];
+        }
+
+        private GameObject NewObjParent;
+        [SerializeField]
+        [Tooltip("Random map objects pool")]
+        public List<GameObject> mapObjList;
+        void FillOneMapObject(Vector3 pos, GameObject obj)
+        {
+            if (NewObjParent == null)
+            {
+                NewObjParent = new GameObject("MapObjects");
+                NewObjParent.transform.position = Origin;
+            }
+            var newObj = GameObject.Instantiate(obj);
+            newObj.transform.SetParent(NewObjParent.transform);
+            newObj.transform.position = pos;
+            float ranY = Random.Range(0.0f, 359f);
+            newObj.transform.localRotation = Quaternion.Euler(0f, ranY, 0f);
         }
     }
 }
