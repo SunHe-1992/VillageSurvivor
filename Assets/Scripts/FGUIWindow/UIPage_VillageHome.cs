@@ -55,6 +55,7 @@ public class UIPage_VillageHome : FUIBase
     {
         base.OnShown();
         ShowPawnHUD(false);
+        ui.btn_platform.visible = false;
     }
 
 
