@@ -102,5 +102,31 @@
     "WorkLoad": 150,
     "Score": 24,
     "MaxWorkers": 1
+  },
+  {
+    "Name": "Silver Axe",
+    "ID": 9,
+    "Description": "Forging Silver Axe",
+    "BuildingId": 17,
+    "ResourceItemId": 14,
+    "ResourceAmount": 10,
+    "ProductItemId": 20,
+    "ProductAmount": 1,
+    "WorkLoad": 100,
+    "Score": 22,
+    "MaxWorkers": 1
+  },
+  {
+    "Name": "Gold Axe",
+    "ID": 10,
+    "Description": "Forging Gold Axe",
+    "BuildingId": 17,
+    "ResourceItemId": 14,
+    "ResourceAmount": 10,
+    "ProductItemId": 21,
+    "ProductAmount": 1,
+    "WorkLoad": 100,
+    "Score": 22,
+    "MaxWorkers": 1
   }
 ]

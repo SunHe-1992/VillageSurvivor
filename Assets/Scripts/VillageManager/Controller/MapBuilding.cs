@@ -52,7 +52,6 @@ namespace SunHeTBS
             }
             SetProgress(0f);
             CreateLogicBuilding();
-
         }
         // Update is called once per frame
         void Update()
@@ -84,6 +83,38 @@ namespace SunHeTBS
                 FUIManager.Inst.ShowUI<UIPage_BuildingInfo>(FUIDef.FWindow.BuildingInfo, null, this.logicBuilding.sid);
             }
 
+        }
+        #endregion
+
+        #region models
+        [SerializeField]
+        [Tooltip("building models")]
+        public List<GameObject> modelList;
+        GameObject buildingModel;
+        public void ApplyBuildingModel(int buildingId)
+        {
+            if (buildingModel != null)
+                GameObject.Destroy(buildingModel);
+            var cfg = ConfigManager.table.TbBuilding.GetOrDefault(buildingId);
+            if (cfg != null)
+            {
+                string modelName = cfg.ModelName;
+                var newObj = GameObject.Instantiate(FindModel(modelName));
+                newObj.transform.parent = this.transform;
+                newObj.transform.localPosition = Vector3.zero;
+                newObj.transform.localRotation = Quaternion.identity;
+                buildingModel = newObj;
+                newObj.name = buildingId + "_" + modelName;
+            }
+        }
+        GameObject FindModel(string name)
+        {
+            foreach (var md in modelList)
+            {
+                if (md.name == name)
+                    return md;
+            }
+            return modelList[0];
         }
         #endregion
 

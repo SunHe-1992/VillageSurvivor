@@ -7,7 +7,7 @@
     "Effect": 0,
     "WorkLoad": 100,
     "Price": 0,
-    "ModelName": "Home",
+    "ModelName": "WoodenHouse",
     "Description": "Provide living space for villagers."
   },
   {
@@ -18,7 +18,7 @@
     "Effect": 0,
     "WorkLoad": 100,
     "Price": 0,
-    "ModelName": "Tavern",
+    "ModelName": "WoodenHouse",
     "Description": "Social hubs for villagers to relax and socialize."
   },
   {
@@ -29,7 +29,7 @@
     "Effect": 0,
     "WorkLoad": 100,
     "Price": 0,
-    "ModelName": "Chapel",
+    "ModelName": "WoodenHouse",
     "Description": "Places of worship for religious ceremonies."
   },
   {
@@ -40,7 +40,7 @@
     "Effect": 0,
     "WorkLoad": 100,
     "Price": 0,
-    "ModelName": "Logging Camp",
+    "ModelName": "WoodenHouse",
     "Description": "Used for harvesting wood."
   },
   {
@@ -51,7 +51,7 @@
     "Effect": 0,
     "WorkLoad": 100,
     "Price": 0,
-    "ModelName": "Mining Camp",
+    "ModelName": "House_1",
     "Description": "Used for extracting minerals and ores."
   },
   {
@@ -62,7 +62,7 @@
     "Effect": 0,
     "WorkLoad": 100,
     "Price": 0,
-    "ModelName": "Fishing Pier",
+    "ModelName": "House_2",
     "Description": "Used for catching fish."
   },
   {
@@ -73,7 +73,7 @@
     "Effect": 0,
     "WorkLoad": 100,
     "Price": 0,
-    "ModelName": "Hunting Lodge",
+    "ModelName": "House_4",
     "Description": "Serve as bases for hunting activities."
   },
   {
@@ -84,7 +84,7 @@
     "Effect": 0,
     "WorkLoad": 100,
     "Price": 0,
-    "ModelName": "Field",
+    "ModelName": "WoodenHouse",
     "Description": "Used for cultivating crops."
   },
   {
@@ -95,7 +95,7 @@
     "Effect": 0,
     "WorkLoad": 100,
     "Price": 0,
-    "ModelName": "Barn",
+    "ModelName": "WoodenHouse",
     "Description": "Store harvested crops and other agricultural goods."
   },
   {
@@ -106,7 +106,7 @@
     "Effect": 0,
     "WorkLoad": 100,
     "Price": 0,
-    "ModelName": "Pen",
+    "ModelName": "WoodenHouse",
     "Description": "Used for raising livestock, such as pigs and sheep."
   },
   {
@@ -117,7 +117,7 @@
     "Effect": 0,
     "WorkLoad": 100,
     "Price": 0,
-    "ModelName": "Stable",
+    "ModelName": "WoodenHouse",
     "Description": "Used for housing horses."
   },
   {
@@ -128,7 +128,7 @@
     "Effect": 0,
     "WorkLoad": 100,
     "Price": 0,
-    "ModelName": "Workshop",
+    "ModelName": "WoodenHouse",
     "Description": "Used for crafting various items, such as tools, weapons, and furniture."
   },
   {
@@ -139,7 +139,7 @@
     "Effect": 0,
     "WorkLoad": 100,
     "Price": 0,
-    "ModelName": "Smithy",
+    "ModelName": "WoodenHouse",
     "Description": "Used for forging metal objects."
   },
   {
@@ -150,7 +150,7 @@
     "Effect": 0,
     "WorkLoad": 100,
     "Price": 0,
-    "ModelName": "Brewery",
+    "ModelName": "Blue Building",
     "Description": "Produce alcoholic beverages."
   },
   {
@@ -161,7 +161,7 @@
     "Effect": 0,
     "WorkLoad": 100,
     "Price": 0,
-    "ModelName": "Bakery",
+    "ModelName": "WoodenHouse",
     "Description": "Produce bread and other baked goods."
   },
   {
@@ -172,7 +172,7 @@
     "Effect": 0,
     "WorkLoad": 100,
     "Price": 0,
-    "ModelName": "Trading Post",
+    "ModelName": "WoodenHouse",
     "Description": "Facilitate trade with other villages."
   },
   {
@@ -183,7 +183,7 @@
     "Effect": 0,
     "WorkLoad": 100,
     "Price": 0,
-    "ModelName": "Blacksmith",
+    "ModelName": "Corner Building",
     "Description": "Provide repair and maintenance services for weapons and tools."
   },
   {
@@ -194,7 +194,7 @@
     "Effect": 0,
     "WorkLoad": 100,
     "Price": 0,
-    "ModelName": "Tailor",
+    "ModelName": "WoodenHouse",
     "Description": "Produce clothing and textiles."
   },
   {
@@ -205,7 +205,7 @@
     "Effect": 0,
     "WorkLoad": 100,
     "Price": 0,
-    "ModelName": "Warehouse",
+    "ModelName": "WoodenHouse",
     "Description": "Store various resources and goods."
   },
   {
@@ -216,7 +216,7 @@
     "Effect": 0,
     "WorkLoad": 100,
     "Price": 0,
-    "ModelName": "Silo",
+    "ModelName": "WoodenHouse",
     "Description": "Store grain and other agricultural products."
   },
   {
@@ -227,7 +227,7 @@
     "Effect": 0,
     "WorkLoad": 100,
     "Price": 0,
-    "ModelName": "Canteen",
+    "ModelName": "School",
     "Description": "People eat here."
   },
   {
@@ -238,7 +238,7 @@
     "Effect": 1,
     "WorkLoad": 100,
     "Price": 0,
-    "ModelName": "Simple House",
+    "ModelName": "Fire Station",
     "Description": "People rest here."
   }
 ]

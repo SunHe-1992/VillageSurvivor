@@ -23,7 +23,7 @@ namespace SunHeTBS
         {
             Inst = UniSingleton.CreateSingleton<BattleDriver>();
             Inst.InitMedievalData();
-  
+
 
         }
         public void OnCreate(object createParam)
@@ -211,15 +211,28 @@ namespace SunHeTBS
             trans.rotation = Quaternion.identity;
             trans.localScale = Vector3.one;
             buildingGizmos.name = "buildingGizmos";
+            var mbScript = buildingGizmos.GetComponent<MapBuilding>();
+            if (mbScript != null)
+            {
+                mbScript.ApplyBuildingModel(id);
+            }
         }
         public void EndDecidingBuidlingLocation(bool confirmBuilding)
         {
-            if (buildingGizmos != null && CheckBuildingLocationCorrect(buildingGizmos.transform.position))
+            if (confirmBuilding)
+            {
+                if (buildingGizmos != null && CheckBuildingLocationCorrect(buildingGizmos.transform.position))
+                {
+                    DecidingBuildingLocation = false;
+                    ProcessCreateMapBuilding(pendingBuildingId, buildingGizmos.transform.position, buildingGizmos);
+                    buildingGizmos = null;
+                }
+            }
+            else
             {
                 DecidingBuildingLocation = false;
-                ProcessCreateMapBuilding(pendingBuildingId, buildingGizmos.transform.position, buildingGizmos);
+                GameObject.Destroy(buildingGizmos);
                 buildingGizmos = null;
-
             }
         }
         void UpdateDecidingBuildingLocation()

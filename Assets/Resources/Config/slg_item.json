@@ -188,5 +188,25 @@
     "Price": 100,
     "effectId": 0,
     "ModelName": ""
+  },
+  {
+    "ID": 20,
+    "Name": "Silver Axe",
+    "Quality": 2,
+    "Icon": "Silver Axe",
+    "Des": "Silver Axe",
+    "Price": 300,
+    "effectId": 0,
+    "ModelName": ""
+  },
+  {
+    "ID": 21,
+    "Name": "Gold Axe",
+    "Quality": 3,
+    "Icon": "Gold Axe",
+    "Des": "Gold Axe",
+    "Price": 900,
+    "effectId": 0,
+    "ModelName": ""
   }
 ]
