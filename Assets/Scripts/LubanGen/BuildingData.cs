@@ -25,6 +25,7 @@ public sealed partial class BuildingData : Luban.BeanBase
         { if(!_buf["WorkLoad"].IsNumber) { throw new SerializationException(); }  WorkLoad = _buf["WorkLoad"]; }
         { if(!_buf["Price"].IsNumber) { throw new SerializationException(); }  Price = _buf["Price"]; }
         { if(!_buf["ModelName"].IsString) { throw new SerializationException(); }  ModelName = _buf["ModelName"]; }
+        { if(!_buf["IconName"].IsString) { throw new SerializationException(); }  IconName = _buf["IconName"]; }
         { if(!_buf["Description"].IsString) { throw new SerializationException(); }  Description = _buf["Description"]; }
     }
 
@@ -44,6 +45,7 @@ public sealed partial class BuildingData : Luban.BeanBase
     public readonly float WorkLoad;
     public readonly float Price;
     public readonly string ModelName;
+    public readonly string IconName;
     public readonly string Description;
    
     public const int __ID__ = -818589538;
@@ -51,6 +53,7 @@ public sealed partial class BuildingData : Luban.BeanBase
 
     public  void ResolveRef(Tables tables)
     {
+        
         
         
         
@@ -73,6 +76,7 @@ public sealed partial class BuildingData : Luban.BeanBase
         + "WorkLoad:" + WorkLoad + ","
         + "Price:" + Price + ","
         + "ModelName:" + ModelName + ","
+        + "IconName:" + IconName + ","
         + "Description:" + Description + ","
         + "}";
     }

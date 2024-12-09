@@ -112,7 +112,7 @@ public class UIPage_BuildingUI : FUIBase
         var cfg = ConfigManager.table.TbBuilding.Get(data.buildingId);
 
         string packName = FUIDef.FPackage.PackageVillage.ToString();
-        mItem.iconLoader.url = $"ui://{packName}/{cfg.ModelName}";//icon from fairy
+        mItem.iconLoader.url = $"ui://{packName}/{cfg.IconName}";//icon from fairy
         mItem.txt_name.text = cfg.Name;
         mItem.onClick.Set(() =>
         {

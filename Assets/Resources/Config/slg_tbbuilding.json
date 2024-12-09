@@ -8,6 +8,7 @@
     "WorkLoad": 100,
     "Price": 0,
     "ModelName": "WoodenHouse",
+    "IconName": "Home",
     "Description": "Provide living space for villagers."
   },
   {
@@ -19,6 +20,7 @@
     "WorkLoad": 100,
     "Price": 0,
     "ModelName": "WoodenHouse",
+    "IconName": "Tavern",
     "Description": "Social hubs for villagers to relax and socialize."
   },
   {
@@ -30,6 +32,7 @@
     "WorkLoad": 100,
     "Price": 0,
     "ModelName": "WoodenHouse",
+    "IconName": "Chapel",
     "Description": "Places of worship for religious ceremonies."
   },
   {
@@ -41,6 +44,7 @@
     "WorkLoad": 100,
     "Price": 0,
     "ModelName": "WoodenHouse",
+    "IconName": "Logging Camp",
     "Description": "Used for harvesting wood."
   },
   {
@@ -52,6 +56,7 @@
     "WorkLoad": 100,
     "Price": 0,
     "ModelName": "House_1",
+    "IconName": "Mining Camp",
     "Description": "Used for extracting minerals and ores."
   },
   {
@@ -63,6 +68,7 @@
     "WorkLoad": 100,
     "Price": 0,
     "ModelName": "House_2",
+    "IconName": "Fishing Pier",
     "Description": "Used for catching fish."
   },
   {
@@ -74,6 +80,7 @@
     "WorkLoad": 100,
     "Price": 0,
     "ModelName": "House_4",
+    "IconName": "Hunting Lodge",
     "Description": "Serve as bases for hunting activities."
   },
   {
@@ -85,6 +92,7 @@
     "WorkLoad": 100,
     "Price": 0,
     "ModelName": "WoodenHouse",
+    "IconName": "Field",
     "Description": "Used for cultivating crops."
   },
   {
@@ -96,6 +104,7 @@
     "WorkLoad": 100,
     "Price": 0,
     "ModelName": "WoodenHouse",
+    "IconName": "Barn",
     "Description": "Store harvested crops and other agricultural goods."
   },
   {
@@ -107,6 +116,7 @@
     "WorkLoad": 100,
     "Price": 0,
     "ModelName": "WoodenHouse",
+    "IconName": "Pen",
     "Description": "Used for raising livestock, such as pigs and sheep."
   },
   {
@@ -118,6 +128,7 @@
     "WorkLoad": 100,
     "Price": 0,
     "ModelName": "WoodenHouse",
+    "IconName": "Stable",
     "Description": "Used for housing horses."
   },
   {
@@ -129,6 +140,7 @@
     "WorkLoad": 100,
     "Price": 0,
     "ModelName": "WoodenHouse",
+    "IconName": "Workshop",
     "Description": "Used for crafting various items, such as tools, weapons, and furniture."
   },
   {
@@ -140,6 +152,7 @@
     "WorkLoad": 100,
     "Price": 0,
     "ModelName": "WoodenHouse",
+    "IconName": "Smithy",
     "Description": "Used for forging metal objects."
   },
   {
@@ -151,6 +164,7 @@
     "WorkLoad": 100,
     "Price": 0,
     "ModelName": "Blue Building",
+    "IconName": "Brewery",
     "Description": "Produce alcoholic beverages."
   },
   {
@@ -162,6 +176,7 @@
     "WorkLoad": 100,
     "Price": 0,
     "ModelName": "WoodenHouse",
+    "IconName": "Bakery",
     "Description": "Produce bread and other baked goods."
   },
   {
@@ -173,6 +188,7 @@
     "WorkLoad": 100,
     "Price": 0,
     "ModelName": "WoodenHouse",
+    "IconName": "Trading Post",
     "Description": "Facilitate trade with other villages."
   },
   {
@@ -184,6 +200,7 @@
     "WorkLoad": 100,
     "Price": 0,
     "ModelName": "Corner Building",
+    "IconName": "Blacksmith",
     "Description": "Provide repair and maintenance services for weapons and tools."
   },
   {
@@ -195,6 +212,7 @@
     "WorkLoad": 100,
     "Price": 0,
     "ModelName": "WoodenHouse",
+    "IconName": "Tailor",
     "Description": "Produce clothing and textiles."
   },
   {
@@ -206,6 +224,7 @@
     "WorkLoad": 100,
     "Price": 0,
     "ModelName": "WoodenHouse",
+    "IconName": "Warehouse",
     "Description": "Store various resources and goods."
   },
   {
@@ -217,6 +236,7 @@
     "WorkLoad": 100,
     "Price": 0,
     "ModelName": "WoodenHouse",
+    "IconName": "Silo",
     "Description": "Store grain and other agricultural products."
   },
   {
@@ -228,6 +248,7 @@
     "WorkLoad": 100,
     "Price": 0,
     "ModelName": "School",
+    "IconName": "Canteen",
     "Description": "People eat here."
   },
   {
@@ -239,6 +260,7 @@
     "WorkLoad": 100,
     "Price": 0,
     "ModelName": "Fire Station",
+    "IconName": "Simple House",
     "Description": "People rest here."
   }
 ]

@@ -7,6 +7,7 @@ namespace PackageVillage
 {
     public partial class UI_BuildingInfo : GComponent
     {
+        public Controller ctrl_guide;
         public UI_common_kuang_2 frame;
         public GList list_order;
         public UI_Button_Common_11 btn_confirm_produce;
@@ -24,6 +25,7 @@ namespace PackageVillage
         {
             base.ConstructFromXML(xml);
 
+            ctrl_guide = GetController("ctrl_guide");
             frame = (UI_common_kuang_2)GetChild("frame");
             list_order = (GList)GetChild("list_order");
             btn_confirm_produce = (UI_Button_Common_11)GetChild("btn_confirm_produce");

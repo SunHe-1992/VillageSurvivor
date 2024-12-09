@@ -7,6 +7,7 @@ namespace PackageVillage
 {
     public partial class UI_BuildingUI : GComponent
     {
+        public Controller ctrl_guide;
         public UI_common_kuang_2 frame;
         public UI_Button_Common_11 btn_confirm_building;
         public UI_Dropdown cbox_building;
@@ -22,6 +23,7 @@ namespace PackageVillage
         {
             base.ConstructFromXML(xml);
 
+            ctrl_guide = GetController("ctrl_guide");
             frame = (UI_common_kuang_2)GetChild("frame");
             btn_confirm_building = (UI_Button_Common_11)GetChild("btn_confirm_building");
             cbox_building = (UI_Dropdown)GetChild("cbox_building");

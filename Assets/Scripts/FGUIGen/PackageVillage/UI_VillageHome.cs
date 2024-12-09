@@ -8,6 +8,7 @@ namespace PackageVillage
     public partial class UI_VillageHome : GComponent
     {
         public Controller ctrl_pawnHUD;
+        public Controller ctrl_guide;
         public UI_Button_Common_11 btn_buildings;
         public UI_Button_Common_11 btn_warehouse;
         public GTextField txt_hud;
@@ -28,6 +29,7 @@ namespace PackageVillage
             base.ConstructFromXML(xml);
 
             ctrl_pawnHUD = GetController("ctrl_pawnHUD");
+            ctrl_guide = GetController("ctrl_guide");
             btn_buildings = (UI_Button_Common_11)GetChild("btn_buildings");
             btn_warehouse = (UI_Button_Common_11)GetChild("btn_warehouse");
             txt_hud = (GTextField)GetChild("txt_hud");
