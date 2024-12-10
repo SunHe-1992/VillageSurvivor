@@ -5,6 +5,19 @@ using UnityEngine;
 public class MusicController : MonoBehaviour
 {
     public AudioSource musicSource;
+    static MusicController Inst;
+    private void Awake()
+    {
+        if (Inst != null)
+        {
+            GameObject.Destroy(this.gameObject);
+        }
+        else
+        {
+            Inst = this;
+            DontDestroyOnLoad(gameObject);
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
