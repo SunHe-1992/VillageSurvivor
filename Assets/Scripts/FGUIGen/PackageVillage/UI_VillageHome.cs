@@ -11,7 +11,9 @@ namespace PackageVillage
         public Controller ctrl_guide;
         public UI_Button_Common_11 btn_buildings;
         public UI_Button_Common_11 btn_warehouse;
+        public UI_Button_Common_11 btn_options;
         public GTextField txt_hud;
+        public GTextField txt_score;
         public UI_Button_Common_11 btn_help;
         public UI_Button_Common_11 btn_AddVillager;
         public UI_SpeedController speedCtrl;
@@ -32,7 +34,9 @@ namespace PackageVillage
             ctrl_guide = GetController("ctrl_guide");
             btn_buildings = (UI_Button_Common_11)GetChild("btn_buildings");
             btn_warehouse = (UI_Button_Common_11)GetChild("btn_warehouse");
+            btn_options = (UI_Button_Common_11)GetChild("btn_options");
             txt_hud = (GTextField)GetChild("txt_hud");
+            txt_score = (GTextField)GetChild("txt_score");
             btn_help = (UI_Button_Common_11)GetChild("btn_help");
             btn_AddVillager = (UI_Button_Common_11)GetChild("btn_AddVillager");
             speedCtrl = (UI_SpeedController)GetChild("speedCtrl");

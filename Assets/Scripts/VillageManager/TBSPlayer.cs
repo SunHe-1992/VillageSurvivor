@@ -225,7 +225,7 @@ public class UserDetail
     public Dictionary<int, QuestEntry> myQuests = new Dictionary<int, QuestEntry>();
     public List<int> achievementList = new List<int>();
     public List<UserBuilding> buildingData = new List<UserBuilding>();
-    public float score = 0;
+    public float score = 500;
     public void AddScore(float _score)
     {
         this.score += _score;

@@ -26,6 +26,13 @@ public class UIPage_VillageHome : FUIBase
         spdCtrl.btn_x1.onClick.Set(OnBtnSpeedX1);
         spdCtrl.btn_x5.onClick.Set(OnBtnSpeedX5);
         spdCtrl.btn_x10.onClick.Set(OnBtnSpeedX10);
+        ui.btn_options.onClick.Set(OnOptionClick);
+    }
+
+
+    private void OnOptionClick(EventContext context)
+    {
+        FUIManager.Inst.ShowUI<UIPage_OptionsUI>(FUIDef.FWindow.OptionsUI);
     }
 
     private void OnBtnHelpClick(EventContext context)
@@ -33,9 +40,14 @@ public class UIPage_VillageHome : FUIBase
         FUIManager.Inst.ShowUI<UIPage_InstructionUI>(FUIDef.FWindow.InstructionUI);
     }
 
+    int recruitCost = 100;
     private void OnBtnAddVillager(EventContext context)
     {
-        BattleDriver.Inst.AddVillager();
+        if (TBSPlayer.UserDetail.score >= recruitCost)
+        {
+            TBSPlayer.UserDetail.score -= recruitCost;
+            BattleDriver.Inst.AddVillager();
+        }
     }
 
 
@@ -94,8 +106,8 @@ public class UIPage_VillageHome : FUIBase
     {
         string msg = "";
         //score:
-        msg += $"score={TBSPlayer.UserDetail.score}";
-        msg += $"DecidingBuildingLocation={BattleDriver.Inst.DecidingBuildingLocation}";
+        //msg += $"score={TBSPlayer.UserDetail.score}";
+        //msg += $"DecidingBuildingLocation={BattleDriver.Inst.DecidingBuildingLocation}";
 
         ui.txt_hud.text = msg;
 
@@ -109,6 +121,9 @@ public class UIPage_VillageHome : FUIBase
         }
 
         ui.speedCtrl.txt_speed.text = $"Speed:{BattleDriver.Inst.speedScale}";
+
+        ui.txt_score.text = $"Score: {TBSPlayer.UserDetail.score}";
+        ui.btn_AddVillager.enabled = TBSPlayer.UserDetail.score >= recruitCost;
     }
     #region pawn HUD
     public static bool showPawnHUD = false;
